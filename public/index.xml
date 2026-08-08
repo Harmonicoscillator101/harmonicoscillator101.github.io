@@ -26,6 +26,31 @@ $$&lt;p&gt;关联函数的形式解：通过传播函数，运用常数变易法
 &lt;/p&gt;</description>
     </item>
     <item>
+      <title>等离子体输运理论(7)</title>
+      <link>http://localhost:1313/posts/transport-of-plasma7/</link>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/transport-of-plasma7/</guid>
+      <description>&lt;h1 id=&#34;等离体的宏观描述&#34;&gt;等离体的宏观描述&lt;/h1&gt;
+&lt;h2 id=&#34;局域分布函数&#34;&gt;局域分布函数&lt;/h2&gt;
+&lt;h3 id=&#34;输运理论概念&#34;&gt;输运理论概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;空间平移不变性&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+f^a(\boldsymbol{q},\boldsymbol{v};t) = n_a \varphi^a(\boldsymbol{v};t)
+$$&lt;p&gt;
+$n_a$ 表示离子数密度，$\varphi^a$ 为速度分布，满足归一化条件：
+&lt;/p&gt;
+$$
+\int \varphi^a(\boldsymbol{v};t) \, d\boldsymbol{v} = 1
+$$&lt;p&gt;&lt;strong&gt;宏观动力学函数&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+B^a(\boldsymbol{x};t) = \int b^a(\boldsymbol{q},\boldsymbol{v};t) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q} \, d\boldsymbol{v}
+$$&lt;p&gt;
+$b^a(\boldsymbol{q},\boldsymbol{v};t)$ 表示相空间中的任意函数。注意，$\boldsymbol{x}$ 不是相空间坐标而是物理空间坐标。&lt;/p&gt;
+&lt;p&gt;宏观动力学函数建立起了微观物理与宏观物理之间的关系。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>在个人Windows电脑上使用VS Code中搭建Qiskit量子计算开发环境</title>
       <link>http://localhost:1313/posts/how-to-set-up-qiskit/</link>
       <pubDate>Fri, 07 Aug 2026 00:00:00 +0000</pubDate>

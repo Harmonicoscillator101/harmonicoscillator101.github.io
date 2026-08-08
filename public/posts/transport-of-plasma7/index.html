@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>等离子体输运理论(7) | Harmonicoscillator的个人网站</title>
+<meta name="keywords" content="等离子体, 输运理论, 笔记">
+<meta name="description" content="等离体的宏观描述
+局域分布函数
+输运理论概念
+空间平移不变性：
+
+$$
+f^a(\boldsymbol{q},\boldsymbol{v};t) = n_a \varphi^a(\boldsymbol{v};t)
+$$
+$n_a$ 表示离子数密度，$\varphi^a$ 为速度分布，满足归一化条件：
+
+$$
+\int \varphi^a(\boldsymbol{v};t) \, d\boldsymbol{v} = 1
+$$宏观动力学函数：
+
+$$
+B^a(\boldsymbol{x};t) = \int b^a(\boldsymbol{q},\boldsymbol{v};t) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q} \, d\boldsymbol{v}
+$$
+$b^a(\boldsymbol{q},\boldsymbol{v};t)$ 表示相空间中的任意函数。注意，$\boldsymbol{x}$ 不是相空间坐标而是物理空间坐标。
+宏观动力学函数建立起了微观物理与宏观物理之间的关系。">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/transport-of-plasma7/"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/images/mostima1.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/transport-of-plasma7/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="stylesheet" href="/css/custom.css">
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [
+      ['$', '$'],
+      ['\\(', '\\)']
+    ],
+    displayMath: [
+      ['$$', '$$'],
+      ['\\[', '\\]']
+    ],
+    processEscapes: true,
+    processEnvironments: true,
+    tags: 'ams',
+    packages: {
+      '[+]': ['mathtools', 'bm']
+    }
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Harmonicoscillator (Alt + H)">
+                <img src="http://localhost:1313/images/mostima.jpg" alt="" aria-label="logo"
+                    height="35">Harmonicoscillator</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/life/" title="生活">
+                    <span>生活</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/posts/">文章</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      等离子体输运理论(7)
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-08-08 00:00:00 +0000 UTC'>August 8, 2026</span>&nbsp;·&nbsp;<span>7 min</span>
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+    </div>
+  </header> <details class="toc"  open>
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#%e7%ad%89%e7%a6%bb%e4%bd%93%e7%9a%84%e5%ae%8f%e8%a7%82%e6%8f%8f%e8%bf%b0" aria-label="等离体的宏观描述">等离体的宏观描述</a><ul>
+                    
+            <li>
+                <a href="#%e5%b1%80%e5%9f%9f%e5%88%86%e5%b8%83%e5%87%bd%e6%95%b0" aria-label="局域分布函数">局域分布函数</a><ul>
+                    
+            <li>
+                <a href="#%e8%be%93%e8%bf%90%e7%90%86%e8%ae%ba%e6%a6%82%e5%bf%b5" aria-label="输运理论概念">输运理论概念</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e7%ad%89%e7%a6%bb%e4%bd%93%e7%9a%84%e5%ae%8f%e8%a7%82%e9%87%8f" aria-label="等离体的宏观量">等离体的宏观量</a><ul>
+                    
+            <li>
+                <a href="#%e8%be%93%e8%bf%90%e7%90%86%e8%ae%ba%e7%9a%84%e7%9f%a9" aria-label="输运理论的矩">输运理论的矩</a></li>
+            <li>
+                <a href="#%e7%83%ad%e5%8a%9b%e5%ad%a6%e7%9b%b8%e5%85%b3%e9%87%8f" aria-label="热力学相关量">热力学相关量</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e5%9b%9e%e5%88%b0%e5%8a%a8%e7%90%86%e6%96%b9%e7%a8%8b" aria-label="回到动理方程">回到动理方程</a><ul>
+                    
+            <li>
+                <a href="#%e5%88%86%e8%a7%a3%e5%8a%a8%e7%90%86%e6%96%b9%e7%a8%8b" aria-label="分解动理方程">分解动理方程</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e5%ae%8f%e8%a7%82%e9%87%8f%e7%9a%84%e6%bc%94%e5%8c%96%e6%96%b9%e7%a8%8b" aria-label="宏观量的演化方程">宏观量的演化方程</a><ul>
+                    
+            <li>
+                <a href="#%e4%ba%8c%e6%b5%81%e4%bd%93%e7%9a%84%e6%bc%94%e5%8c%96%e6%96%b9%e7%a8%8b" aria-label="二流体的演化方程">二流体的演化方程</a></li>
+            <li>
+                <a href="#%e6%b5%81%e4%bd%93%e5%8a%9b%e5%ad%a6%e5%b9%b3%e8%a1%a1%e6%96%b9%e7%a8%8b" aria-label="流体力学平衡方程">流体力学平衡方程</a></li>
+            <li>
+                <a href="#%e5%b9%b3%e8%a1%a1%e6%96%b9%e7%a8%8b" aria-label="平衡方程">平衡方程</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="等离体的宏观描述">等离体的宏观描述<a hidden class="anchor" aria-hidden="true" href="#等离体的宏观描述">#</a></h1>
+<h2 id="局域分布函数">局域分布函数<a hidden class="anchor" aria-hidden="true" href="#局域分布函数">#</a></h2>
+<h3 id="输运理论概念">输运理论概念<a hidden class="anchor" aria-hidden="true" href="#输运理论概念">#</a></h3>
+<p><strong>空间平移不变性</strong>：
+</p>
+$$
+f^a(\boldsymbol{q},\boldsymbol{v};t) = n_a \varphi^a(\boldsymbol{v};t)
+$$<p>
+$n_a$ 表示离子数密度，$\varphi^a$ 为速度分布，满足归一化条件：
+</p>
+$$
+\int \varphi^a(\boldsymbol{v};t) \, d\boldsymbol{v} = 1
+$$<p><strong>宏观动力学函数</strong>：
+</p>
+$$
+B^a(\boldsymbol{x};t) = \int b^a(\boldsymbol{q},\boldsymbol{v};t) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q} \, d\boldsymbol{v}
+$$<p>
+$b^a(\boldsymbol{q},\boldsymbol{v};t)$ 表示相空间中的任意函数。注意，$\boldsymbol{x}$ 不是相空间坐标而是物理空间坐标。</p>
+<p>宏观动力学函数建立起了微观物理与宏观物理之间的关系。</p>
+<p><strong>微观相空间函数的结构</strong>：
+</p>
+$$
+b^a(\boldsymbol{q},\boldsymbol{v};t) = \beta^a(\boldsymbol{v}) \delta(\boldsymbol{q} - \boldsymbol{x})
+$$<p>
+其中 $\delta(\boldsymbol{q} - \boldsymbol{x})$ 是 Dirac delta 函数。</p>
+<p>因此宏观动力学函数也可以写为：
+</p>
+$$
+B^a(\boldsymbol{x};t) = \int \beta^a(\boldsymbol{v}) f^a(\boldsymbol{v};\boldsymbol{x},t) \, d\boldsymbol{v}
+$$<p>
+其中分布函数已经由 Dirac 函数改变为局域速度分布函数：
+</p>
+$$
+f^a(\boldsymbol{v};\boldsymbol{x},t) = \int \delta(\boldsymbol{q} - \boldsymbol{x}) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q}
+$$<p>
+称其为函数场。</p>
+<p>流体力学与电动力学中的局域密度，可以由宏观动力学函数表达为速度空间中的平均值，利用局域分布函数来计算。</p>
+<hr>
+<h2 id="等离体的宏观量">等离体的宏观量<a hidden class="anchor" aria-hidden="true" href="#等离体的宏观量">#</a></h2>
+<h3 id="输运理论的矩">输运理论的矩<a hidden class="anchor" aria-hidden="true" href="#输运理论的矩">#</a></h3>
+<p>注意到动力学函数是三个速度分量的多项式：
+</p>
+$$
+\beta^a(\boldsymbol{v}) = \sum_{r_1}^{s_1} \sum_{r_2}^{s_2} \sum_{r_3}^{s_3} a^a_{r_1 r_2 r_3} v_x^a v_y^a v_z^a
+$$<p>
+且有 $s_1 + s_2 + s_3 = s$，相应的平均值被称为 $f^a(\boldsymbol{v};\boldsymbol{x},t)$ 的 $s$ 阶矩。</p>
+<p><strong>1. 粒子局域数密度 $n_a(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+n_a(\boldsymbol{x},t) = \int f^a \, d\boldsymbol{v}
+$$<p>
+在全电离等离体中，数密度 $n_a$ 是守恒量的密度。</p>
+<p><strong>2. 平均局域速度 $\boldsymbol{u}^a(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+\Gamma^a(\boldsymbol{x},t) = n_a(\boldsymbol{x},t) \boldsymbol{u}^a(\boldsymbol{x},t) = \int \boldsymbol{v} f^a \, d\boldsymbol{v}
+$$<p>
+其中 $\Gamma^a$ 是粒子流。</p>
+<p><strong>3. 总平均动能密度 $n_a \mathscr{E}_a(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+n_a \mathscr{E}_a(\boldsymbol{x},t) = \frac{1}{2} m_a \int \boldsymbol{v}^2 f^a \, d\boldsymbol{v}
+$$<p>粒子 $a$ 的流体以平均速度 $\boldsymbol{u}^a$ 运动，具有宏观动能密度 $\frac{1}{2} m_a n_a |\boldsymbol{u}^a|^2$。虽然个体速度对整体速度的平均偏差为零，但是由于平方偏差的平均值不为零，因此存在一个种类 $a$ 的粒子的内能密度作为额外项：
+</p>
+$$
+n_a \mathscr{E}_a = \frac{1}{2} m_a n_a |\boldsymbol{u}^a|^2 + n_a \epsilon_a(\boldsymbol{x},t)
+$$<p><strong>内能密度</strong>：
+</p>
+$$
+n_a \epsilon_a = \frac{1}{2} m_a \int |\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v}
+$$<p>
+这个定义基于弱耦合条件满足时成立。</p>
+<h3 id="热力学相关量">热力学相关量<a hidden class="anchor" aria-hidden="true" href="#热力学相关量">#</a></h3>
+<p><strong>压强</strong>：热力学平衡时，理想气体压强满足：
+</p>
+$$
+P_a(\boldsymbol{x},t) = \frac{2}{3} n_a \epsilon_a = \frac{1}{3} m_a \int |\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v}
+$$<p><strong>温度</strong>：热力学平衡时，理想气体满足：
+</p>
+$$
+\epsilon_a = \frac{3}{2} k_B \overline{T}_a
+$$<p>
+对其记号与单位进行修正，记为：
+</p>
+$$
+T_a = k_B \overline{T}_a
+$$<p>对其进行外推后得到种类 $a$ 的粒子温度 $T_a$：
+</p>
+$$
+n_a T_a = \frac{1}{3} m_a \int |\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v} = P_a
+$$<p>至此，$n_a$、$\boldsymbol{u}^a$、$T_a$ 被称为<strong>等离体的动力学变量</strong>，构成等离体的二流体变量。我们最关注那些与流体力学与电动力学相关的量。</p>
+<p><strong>质量密度 $\rho(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+\rho(\boldsymbol{x},t) = \sum_a m_a n_a
+$$<p><strong>质心速度 $\boldsymbol{u}(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+\rho \boldsymbol{u} = \sum_a m_a n_a \boldsymbol{u}^a
+$$<p>
+这具有等离体总动量密度的意义。</p>
+<p><strong>电荷密度 $\sigma(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+\sigma(\boldsymbol{x},t) = \sum_a e_a n_a
+$$<p><strong>电流密度 $\boldsymbol{j}(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+\boldsymbol{j}(\boldsymbol{x},t) = \sum_a e_a n_a \boldsymbol{u}^a
+$$<p><strong>总能量密度 $\rho(\boldsymbol{x},t) \mathscr{E}(\boldsymbol{x},t)$</strong>：
+</p>
+$$
+\rho(\boldsymbol{x},t) \mathscr{E}(\boldsymbol{x},t) = \frac{1}{2} \rho u^2 + \rho \epsilon
+$$<p>这个定义是非线性的，整体内能 $\epsilon$ 与各组分的内能 $\epsilon_a$ 的关系难以确定，关键在于其定义中的质心速度 $\boldsymbol{u}$ 与粒子的平均速度 $\boldsymbol{u}^a$ 的差异。</p>
+<p>在这其中，总能量密度 $\rho \mathscr{E}$ 是唯一重要的流体力学量，因为它是守恒量。但是对于局部内能 $\epsilon_a$ 则不一样，因为在碰撞中会发生不同种类粒子之间能量的传递，只不过这个能量的传递极慢，在大部分情况下可以将其视为准守恒量。因此对于电子和离子，有两种不同的准守恒量 $\epsilon_e$ 与 $\epsilon_i$，对应不同的温度 $T_e$ 与 $T_i$。</p>
+<p><strong>其他非流体力学量</strong>：</p>
+<p>种类 $a$ 的热流：
+</p>
+$$
+\boldsymbol{q}^a(\boldsymbol{x},t) = \sqrt{\frac{5}{2}} m_a n_a \left( \frac{T_a}{m_a} \right)^{\frac{3}{2}} h^{a\{3\}}(\boldsymbol{x},t) = \frac{1}{2} m_a \int (\boldsymbol{v} - \boldsymbol{u}^a) |\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v}
+$$<p>耗散压强张量：
+</p>
+$$
+\begin{aligned}
+\pi_{rj}^a(\boldsymbol{x},t) &= \sqrt{2} n_a T_a h_{rj}^{a\{2\}} \\
+&= m_a \int \left[ (v_r - u_r^a)(v_j - u_j^a) - \frac{1}{3} |\boldsymbol{v} - \boldsymbol{u}^a|^2 \delta_{rj} \right] f^a \, d\boldsymbol{v}
+\end{aligned}
+$$<p>作者附上了各个相关量的表格，在此不再列出。</p>
+<hr>
+<h2 id="回到动理方程">回到动理方程<a hidden class="anchor" aria-hidden="true" href="#回到动理方程">#</a></h2>
+<h3 id="分解动理方程">分解动理方程<a hidden class="anchor" aria-hidden="true" href="#分解动理方程">#</a></h3>
+$$
+\partial_t f^a = \Phi^a + \mathscr{F}^a + \mathscr{K}^a
+$$<p>其中自由流动项为：
+</p>
+$$
+\Phi^a = -\boldsymbol{v} \cdot \nabla f^a
+$$<p>电磁场项为：
+</p>
+$$
+\mathscr{F}^a = -\frac{e_a}{m_a} \left( E_r(\boldsymbol{x},t) + \epsilon_{rmn} v_m B_n(\boldsymbol{x},t) \frac{\partial}{\partial v_r} f^a \right)
+$$<p>
+其中 $E$ 与 $B$ 由 Maxwell 方程确定。如果忽略碰撞项，以上的这一部分已经完全定义了 Vlasov 方程。</p>
+<p>所考虑的重点，也是最复杂的一项就是碰撞项 $\mathscr{K}^a$，它是系统演化的主要驱动。与一般的流体碰撞不同，等离体的碰撞除了外场之外还涉及自身所产生的平均电磁场作用，在弱耦合情况下它归结为 Landau 碰撞算符。</p>
+<hr>
+<h2 id="宏观量的演化方程">宏观量的演化方程<a hidden class="anchor" aria-hidden="true" href="#宏观量的演化方程">#</a></h2>
+<h3 id="二流体的演化方程">二流体的演化方程<a hidden class="anchor" aria-hidden="true" href="#二流体的演化方程">#</a></h3>
+<p>首先处理数密度的演化方程。分布函数直接对速度积分得到：
+</p>
+$$
+\partial_t \int f^a \, d\boldsymbol{v} = \partial_t n_a = \int (\Phi^a + \mathscr{F}^a + \mathscr{K}^a) \, d\boldsymbol{v}
+$$<p>分别代入流动项与电磁场项：
+</p>
+$$
+\int \Phi^a \, d\boldsymbol{v} = -\nabla_m \int v_m f^a \, d\boldsymbol{v} = -\nabla_m (n_a u_m^a)
+$$<p>
+</p>
+$$
+\int \mathscr{F}^a \, d\boldsymbol{v} = -\frac{e_a}{m_a} \int \left( E_r(\boldsymbol{x},t) + \epsilon_{rmn} v_m B_n(\boldsymbol{x},t) \frac{\partial}{\partial v_r} f^a \right) d\boldsymbol{v} = 0
+$$<p>
+同时由守恒律得到：
+</p>
+$$
+\int \mathscr{K}^a \, d\boldsymbol{v} = 0
+$$<p>因此得到<strong>连续性方程</strong>：
+</p>
+$$
+\partial_t n_a = -\nabla_m (n_a \boldsymbol{u}^a)
+$$<p>然后处理平均速度的演化方程。分布函数乘以 $m_a v_r$ 后对速度积分得到：
+</p>
+$$
+m_a \partial_t (n_a u_r^a) = m_a \int v_r (\Phi^a + \mathscr{F}^a + \mathscr{K}^a) \, d\boldsymbol{v}
+$$<p>类似地，代入之前定义过的热力学相关量可以得到：
+</p>
+$$
+m_a \int v_r \Phi^a \, d\boldsymbol{v} = -\nabla_m \left[ m_a n_a u_r^a u_m^a + n_a T_a \delta_{rm} + \pi_{rm}^a \right]
+$$<p>
+</p>
+$$
+m_a \int v_r \mathscr{F}^a \, d\boldsymbol{v} = e_a n_a (E_r + \epsilon_{rmn} u_m^a B_n)
+$$<p>引入被称作摩擦力密度的矢量 $\boldsymbol{R}$ 来解决碰撞项的积分：
+</p>
+$$
+R_r^a(\boldsymbol{x},t) = m_a \int v_r \mathscr{K}^a \, d\boldsymbol{v}
+$$<p>最后可以得到<strong>动量平衡方程</strong>：
+</p>
+$$
+\partial_t (m_a n_a u_r^a) = -\nabla_m (m_a n_a u_r^a u_m^a + \delta_{rm} n_a T_a + \pi_{rm}^a) + e_a n_a (E_r + \epsilon_{rmn} u_m^a B_n) + R_r^a
+$$<p>这里面的 $E$ 和 $B$ 通过 Maxwell 方程组闭合。</p>
+<p>最后是关于温度的能量平衡方程：
+</p>
+$$
+\begin{aligned}
+n_a \partial_t T_a &= -n_a \boldsymbol{u}^a \cdot \nabla T_a - \frac{2}{3} n_a T_a \nabla \cdot \boldsymbol{u}^a \\
+&\quad - \frac{2}{3} \pi^a_{mn} \nabla_m u_n^a - \frac{2}{3} \nabla_m q^a_m + \frac{2}{3} Q^a
+\end{aligned}
+$$<p>其中碰撞热交换率：
+</p>
+$$
+Q^a = \frac{1}{2} m_a \int |\boldsymbol{v} - \boldsymbol{u}^a|^2 \mathscr{K}^a \, d\boldsymbol{v}
+$$<p>摩擦力密度与碰撞热交换率可以由之前的异种粒子碰撞来确定：
+</p>
+$$
+R^e = R^{ei}, \qquad R^i = R^{ie}
+$$<p>
+</p>
+$$
+Q^e = Q^{ei}, \qquad Q^i = Q^{ie}
+$$<p>
+</p>
+$$
+R^{ei} = -R^{ie}
+$$<p>
+</p>
+$$
+Q^{ei} = -Q^{ie} - (\boldsymbol{u}^e - \boldsymbol{u}^i) R^{ei}
+$$<p>最终，关于 $n_a$、$u_r^a$、$T_a$ 的二流体平衡方程确立了。$Q$ 与 $R$ 确定了电子与离子的非独立性。</p>
+<h3 id="流体力学平衡方程">流体力学平衡方程<a hidden class="anchor" aria-hidden="true" href="#流体力学平衡方程">#</a></h3>
+<p>上面推出的二流体方程是为了推出单流体平衡方程做准备的。在采用质量比极小的量级近似后得到以下方程。</p>
+<p>由连续性方程：
+</p>
+$$
+\partial_t \rho = -\nabla \cdot (\rho \boldsymbol{u})
+$$<p>将单流体与二流体变量的转换公式代入得到动量平衡方程（书中列表）：
+</p>
+$$
+\begin{aligned}
+\partial_t \rho u_r &= -\nabla \cdot \left\{ \rho u_r u_i + \delta_{ri} \left[ \left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) T_e + \frac{\rho}{m_i} T_i \right] + \pi_{ri}^e + \pi_{ri}^i \right\} \\
+&\quad + \sigma E_r + \epsilon_{rim} j_i B_m
+\end{aligned}
+$$<p>方程右端散度包含的三项分别为动量流、标量压强、耗散压强。其中得到总标量压强的方程为：
+</p>
+$$
+P = \left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) T_e + \frac{\rho}{m_i} T_i
+$$<p>此外注意到这里面碰撞项 $\mathscr{K}^a$ 没有贡献，这是由于总动量的局域守恒的结果。</p>
+<p>Maxwell 方程与 Lorentz 密度相互耦合后得到：
+</p>
+$$
+\begin{aligned}
+&\nabla \cdot \boldsymbol{E} = 4\pi \sigma \\
+&\nabla \times \boldsymbol{E} = -\partial_t \boldsymbol{B} \\
+&\nabla \cdot \boldsymbol{B} = 0 \\
+&\nabla \times \boldsymbol{B} = \partial_t \boldsymbol{E} + 4\pi \boldsymbol{j}
+\end{aligned}
+$$<p>然后是温度项，分为 $T_i$ 与 $T_e$：
+</p>
+$$
+\begin{aligned}
+&\left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) \partial_t T_e = - \left( \frac{Z \rho}{m_i} u_r - \frac{1}{e} j_r \right) \nabla_r T_e \\
+&\quad - \frac{2}{3} \left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) T_e \nabla_r \left( \frac{Z e \rho u_r - m_i j_r}{Z e \rho - m_i \sigma} \right) \\
+&\quad - \frac{2}{3} \pi_{ri}^e \nabla_r \left( \frac{Z e \rho u_r - m_i j_r}{Z e \rho - m_i \sigma} \right) - \frac{2}{3} \nabla_r q_r^e + \frac{2}{3} Q^e
+\end{aligned}
+$$<p>对于离子温度：
+</p>
+$$
+\begin{aligned}
+\frac{\rho}{m_i} \partial_t T_i &= -\frac{\rho}{m_i} u_r \nabla_r T_i - \frac{2}{3} \frac{\rho}{m_i} T_i \nabla_r u_r \\
+&\quad - \frac{2}{3} \pi_{rs}^i \nabla_r u_s - \frac{2}{3} \nabla_r q_r^i + \frac{2}{3} Q^i
+\end{aligned}
+$$<p>然后是对电动力学项的方程。首先是电荷守恒方程：
+</p>
+$$
+\partial_t \sigma = -\nabla_r j_r
+$$<p>对于电流的偏微分方程要复杂得多：
+</p>
+$$
+\begin{aligned}
+\partial_t j_r &= \nabla_i \left( \frac{Z e \rho \sigma u_r u_s - Z e \rho (j_r u_s + j_s u_r) + m_i j_r j_s}{Z e \rho - m_i \sigma} \right) \\
+&\quad + \frac{1}{m_e m_i} \nabla_r [(Z e \rho - m_i \sigma) T_e] + \frac{e}{m_e} \nabla_i (\pi_{ri}^e - Z \mu \pi_{ri}^i) \\
+&\quad + \frac{e}{m_e m_i} (Z e \rho - m_i \sigma) E_r + \frac{e}{m_e m_i} \epsilon_{rim} (Z e \rho u_i - m_i j_i) B_m \\
+&\quad - \frac{e}{m_e} R_r^e
+\end{aligned}
+$$<p>这个方程称为<strong>广义 Ohm 定律</strong>，它由一般 Ohm 定律 $\boldsymbol{j} = \sigma \boldsymbol{E}$ 推广而来。</p>
+<h3 id="平衡方程">平衡方程<a hidden class="anchor" aria-hidden="true" href="#平衡方程">#</a></h3>
+<p>这样，流体力学平衡方程、广义 Ohm 定律与 Maxwell 方程共同构成了宏观等离体物理基本方程。但是它们不是闭合的，其中的耗散压强、热流、摩擦力密度与热交换率仍然没有约束关系。重新将转换公式代入一开始得到的二流体方程，从而得到单流体的粒子流 $\Gamma^a$、热流 $\boldsymbol{q}^a$、压强张量 $P^a$、四次矩压强张量 $S^a$。具体表达限于篇幅没有展示。</p>
+<p><strong>挑战与目标</strong>：主要需要强调的是，由于流体力学方程具有级列结构，对于一次矩的方程涉及二次矩、二次矩又涉及三次矩，以至于推至无限，这是由于碰撞项的复杂性所决定的，所以目的不在于把全部项罗列出来，而是在于寻找精确解。这个过程涉及电动力学、流体力学、热力学、统计物理等多个物理领域的交叉。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/">等离子体</a></li>
+      <li><a href="http://localhost:1313/tags/%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/">输运理论</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/">笔记</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Harmonicoscillator的个人网站</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<div class="busuanzi-footer">
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+</div></body>
+
+</html>
