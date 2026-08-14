@@ -6,8 +6,43 @@
     <description>Recent content in 等离子体 on Harmonicoscillator的个人网站</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 08 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>等离子体输运理论(8)</title>
+      <link>http://localhost:1313/posts/transport-of-plasma8/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/transport-of-plasma8/</guid>
+      <description>&lt;h1 id=&#34;等离体宏观量的级列结构&#34;&gt;等离体宏观量的级列结构&lt;/h1&gt;
+&lt;h2 id=&#34;不同阶矩&#34;&gt;不同阶矩&lt;/h2&gt;
+&lt;h3 id=&#34;零阶矩&#34;&gt;零阶矩&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;粒子数密度，双流体变量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+n_a(\boldsymbol{x},t) = \int f^a(\boldsymbol{v};\boldsymbol{x},t) \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;密度，单流体变量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\rho(\boldsymbol{x},t) = \sum_a m_a \int f^a \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;电荷密度，电动力学量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\sigma(\boldsymbol{x},t) = \sum_a e_a \int f^a \, d\boldsymbol{v}
+$$&lt;p&gt;在这里面，分布函数应当理解为：
+&lt;/p&gt;
+$$
+f^a(\boldsymbol{v};\boldsymbol{x},t) = \int \delta(\boldsymbol{q} - \boldsymbol{x}) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q}
+$$&lt;h3 id=&#34;一阶矩&#34;&gt;一阶矩&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;平均速度，双流体变量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+n_a u_r^a(\boldsymbol{x},t) = \int v_r f^a \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;质心速度，单流体量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\rho u_r(\boldsymbol{x},t) = \sum_a m_a \int v_r f^a \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;电动力学量&lt;/strong&gt;：&lt;/p&gt;</description>
+    </item>
     <item>
       <title>等离子体输运理论(6)</title>
       <link>http://localhost:1313/posts/transport-of-plasma6/</link>
@@ -30,7 +65,7 @@ $$&lt;p&gt;关联函数的形式解：通过传播函数，运用常数变易法
       <link>http://localhost:1313/posts/transport-of-plasma7/</link>
       <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/transport-of-plasma7/</guid>
-      <description>&lt;h1 id=&#34;等离体的宏观描述&#34;&gt;等离体的宏观描述&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;等离体的宏观描述与矩的导出&#34;&gt;等离体的宏观描述与矩的导出&lt;/h1&gt;
 &lt;h2 id=&#34;局域分布函数&#34;&gt;局域分布函数&lt;/h2&gt;
 &lt;h3 id=&#34;输运理论概念&#34;&gt;输运理论概念&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;空间平移不变性&lt;/strong&gt;：

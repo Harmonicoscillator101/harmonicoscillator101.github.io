@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>等离子体输运理论(8) | Harmonicoscillator的个人网站</title>
+<meta name="keywords" content="等离子体, 输运理论, 笔记">
+<meta name="description" content="等离体宏观量的级列结构
+不同阶矩
+零阶矩
+粒子数密度，双流体变量：
+
+$$
+n_a(\boldsymbol{x},t) = \int f^a(\boldsymbol{v};\boldsymbol{x},t) \, d\boldsymbol{v}
+$$密度，单流体变量：
+
+$$
+\rho(\boldsymbol{x},t) = \sum_a m_a \int f^a \, d\boldsymbol{v}
+$$电荷密度，电动力学量：
+
+$$
+\sigma(\boldsymbol{x},t) = \sum_a e_a \int f^a \, d\boldsymbol{v}
+$$在这里面，分布函数应当理解为：
+
+$$
+f^a(\boldsymbol{v};\boldsymbol{x},t) = \int \delta(\boldsymbol{q} - \boldsymbol{x}) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q}
+$$一阶矩
+平均速度，双流体变量：
+
+$$
+n_a u_r^a(\boldsymbol{x},t) = \int v_r f^a \, d\boldsymbol{v}
+$$质心速度，单流体量：
+
+$$
+\rho u_r(\boldsymbol{x},t) = \sum_a m_a \int v_r f^a \, d\boldsymbol{v}
+$$电动力学量：">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/transport-of-plasma8/"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/images/mostima1.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/transport-of-plasma8/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="stylesheet" href="/css/custom.css">
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [
+      ['$', '$'],
+      ['\\(', '\\)']
+    ],
+    displayMath: [
+      ['$$', '$$'],
+      ['\\[', '\\]']
+    ],
+    processEscapes: true,
+    processEnvironments: true,
+    tags: 'ams',
+    packages: {
+      '[+]': ['mathtools', 'bm']
+    }
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Harmonicoscillator (Alt + H)">
+                <img src="http://localhost:1313/images/mostima.jpg" alt="" aria-label="logo"
+                    height="35">Harmonicoscillator</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/life/" title="生活">
+                    <span>生活</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/posts/">文章</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      等离子体输运理论(8)
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-08-14 00:00:00 +0000 UTC'>August 14, 2026</span>&nbsp;·&nbsp;<span>4 min</span>
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+    </div>
+  </header> <details class="toc"  open>
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#%e7%ad%89%e7%a6%bb%e4%bd%93%e5%ae%8f%e8%a7%82%e9%87%8f%e7%9a%84%e7%ba%a7%e5%88%97%e7%bb%93%e6%9e%84" aria-label="等离体宏观量的级列结构">等离体宏观量的级列结构</a><ul>
+                    
+            <li>
+                <a href="#%e4%b8%8d%e5%90%8c%e9%98%b6%e7%9f%a9" aria-label="不同阶矩">不同阶矩</a><ul>
+                    
+            <li>
+                <a href="#%e9%9b%b6%e9%98%b6%e7%9f%a9" aria-label="零阶矩">零阶矩</a></li>
+            <li>
+                <a href="#%e4%b8%80%e9%98%b6%e7%9f%a9" aria-label="一阶矩">一阶矩</a></li>
+            <li>
+                <a href="#%e4%ba%8c%e9%98%b6%e7%9f%a9" aria-label="二阶矩">二阶矩</a></li>
+            <li>
+                <a href="#%e4%b8%89%e9%98%b6%e5%8f%8a%e4%bb%a5%e4%b8%8a%e7%9f%a9" aria-label="三阶及以上矩">三阶及以上矩</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e5%9b%9e%e5%88%b0%e5%8a%a8%e7%90%86%e6%96%b9%e7%a8%8b%e6%8e%a8%e5%af%bc%e6%bc%94%e5%8c%96%e6%96%b9%e7%a8%8b" aria-label="回到动理方程，推导演化方程">回到动理方程，推导演化方程</a><ul>
+                    
+            <li>
+                <a href="#%e5%9b%9e%e9%a1%be%e5%8a%a8%e7%90%86%e6%96%b9%e7%a8%8b" aria-label="回顾动理方程">回顾动理方程</a></li>
+            <li>
+                <a href="#%e4%b8%8d%e5%90%8c%e5%ae%8f%e8%a7%82%e9%87%8f%e7%9a%84%e6%bc%94%e5%8c%96%e6%96%b9%e7%a8%8b" aria-label="不同宏观量的演化方程">不同宏观量的演化方程</a></li>
+            <li>
+                <a href="#%e5%85%b6%e4%bb%96%e5%b9%b3%e8%a1%a1%e6%96%b9%e7%a8%8b" aria-label="其他平衡方程">其他平衡方程</a></li>
+            <li>
+                <a href="#%e4%b8%80%e4%b8%aa%e7%8c%9c%e6%b5%8b" aria-label="一个猜测">一个猜测</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="等离体宏观量的级列结构">等离体宏观量的级列结构<a hidden class="anchor" aria-hidden="true" href="#等离体宏观量的级列结构">#</a></h1>
+<h2 id="不同阶矩">不同阶矩<a hidden class="anchor" aria-hidden="true" href="#不同阶矩">#</a></h2>
+<h3 id="零阶矩">零阶矩<a hidden class="anchor" aria-hidden="true" href="#零阶矩">#</a></h3>
+<p><strong>粒子数密度，双流体变量</strong>：
+</p>
+$$
+n_a(\boldsymbol{x},t) = \int f^a(\boldsymbol{v};\boldsymbol{x},t) \, d\boldsymbol{v}
+$$<p><strong>密度，单流体变量</strong>：
+</p>
+$$
+\rho(\boldsymbol{x},t) = \sum_a m_a \int f^a \, d\boldsymbol{v}
+$$<p><strong>电荷密度，电动力学量</strong>：
+</p>
+$$
+\sigma(\boldsymbol{x},t) = \sum_a e_a \int f^a \, d\boldsymbol{v}
+$$<p>在这里面，分布函数应当理解为：
+</p>
+$$
+f^a(\boldsymbol{v};\boldsymbol{x},t) = \int \delta(\boldsymbol{q} - \boldsymbol{x}) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q}
+$$<h3 id="一阶矩">一阶矩<a hidden class="anchor" aria-hidden="true" href="#一阶矩">#</a></h3>
+<p><strong>平均速度，双流体变量</strong>：
+</p>
+$$
+n_a u_r^a(\boldsymbol{x},t) = \int v_r f^a \, d\boldsymbol{v}
+$$<p><strong>质心速度，单流体量</strong>：
+</p>
+$$
+\rho u_r(\boldsymbol{x},t) = \sum_a m_a \int v_r f^a \, d\boldsymbol{v}
+$$<p><strong>电动力学量</strong>：</p>
+<p>电流密度：
+</p>
+$$
+j_r(\boldsymbol{x},t) = \sum_a e_a \int v_r f^a \, d\boldsymbol{v}
+$$<p>粒子流：
+</p>
+$$
+\Gamma_r^a(\boldsymbol{x},t) = \int v_r f^a \, d\boldsymbol{v}
+$$<h3 id="二阶矩">二阶矩<a hidden class="anchor" aria-hidden="true" href="#二阶矩">#</a></h3>
+<p><strong>温度</strong>（既是双流体变量也是单流体变量）：
+</p>
+$$
+n_a T_a(\boldsymbol{x},t) = \frac{1}{3} m_a \int |\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v}
+$$<p><strong>压强张量</strong>：</p>
+<p>耗散压强张量：
+</p>
+$$
+\pi_{rs}^a = m_a \int \left[ (v_r - u_r^a)(v_s - u_s^a) - \frac{1}{3}|\boldsymbol{v} - \boldsymbol{u}^a|^2 \delta_{rs} \right] f^a \, d\boldsymbol{v}
+$$<p>总压强张量：
+</p>
+$$
+P_{rs}^a = m_a \int (v_r - u_r^a)(v_s - u_s^a) f^a \, d\boldsymbol{v}
+$$<h3 id="三阶及以上矩">三阶及以上矩<a hidden class="anchor" aria-hidden="true" href="#三阶及以上矩">#</a></h3>
+<p><strong>热流</strong>：
+</p>
+$$
+q_r^a(\boldsymbol{x},t) = \frac{1}{2} m_a \int (v_r - u_r^a)|\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v}
+$$<p>更高阶矩没有直接的物理含义，但是仍然为我们感兴趣：</p>
+<ol>
+<li>
+<p>三阶张量三次矩：$ q_{rsp}^a = \frac{1}{2} \int (v_r - u_r^a)(v_s - u_s^a)(v_p - u_p^a) f^a \, d\boldsymbol{v} $</p>
+</li>
+<li>
+<p>二阶张量四次矩：$ S_{rs}^a = \frac{1}{2} m_a \int (v_r - u_r^a)(v_s - u_s^a) |\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v} $</p>
+</li>
+<li>
+<p>四阶张量四次矩：$ S_{rspq}^a = \frac{1}{2} m_a \int (v_r - u_r^a)(v_s - u_s^a)(v_p - u_p^a)(v_q - u_q^a) f^a \, d\boldsymbol{v} $</p>
+</li>
+<li>
+<p>三阶张量五次矩：$ T_{rsp}^a = \frac{1}{2} m_a \int (v_r - u_r^a)(v_s - u_s^a)(v_p - u_p^a)|\boldsymbol{v} - \boldsymbol{u}^a|^2 f^a \, d\boldsymbol{v} $</p>
+</li>
+</ol>
+<h2 id="回到动理方程推导演化方程">回到动理方程，推导演化方程<a hidden class="anchor" aria-hidden="true" href="#回到动理方程推导演化方程">#</a></h2>
+<h3 id="回顾动理方程">回顾动理方程<a hidden class="anchor" aria-hidden="true" href="#回顾动理方程">#</a></h3>
+<p><strong>动理方程</strong>：
+</p>
+$$
+\partial_t f^a = \Phi^a + \mathscr{F}^a + \mathscr{K}^a
+$$<p>自由流动项：
+</p>
+$$
+\Phi^a = -\boldsymbol{v} \cdot \nabla f^a
+$$<p>电磁场项：
+</p>
+$$
+\mathscr{F}^a = -\frac{e_a}{m_a} \left( E_r(\boldsymbol{x},t) + \epsilon_{rmn} v_m B_n(\boldsymbol{x},t) \frac{\partial}{\partial v_r} f^a \right)
+$$<p>若忽略碰撞项，$E$ 与 $B$ 由 Maxwell 方程组闭合，这就是 Vlasov 方程。</p>
+<p>最复杂的一项就是碰撞项 $\mathscr{K}^a$，它是系统演化的主要驱动。在弱耦合情况下它归结为 Landau 碰撞算符。注意式子中的速度项，这是产生级列结构的根源。</p>
+<h3 id="不同宏观量的演化方程">不同宏观量的演化方程<a hidden class="anchor" aria-hidden="true" href="#不同宏观量的演化方程">#</a></h3>
+<p><strong>粒子数密度（连续性方程）</strong>：
+</p>
+$$
+\partial_t n_a = -\nabla \cdot (n_a \boldsymbol{u}^a)
+$$<p>
+可见，零阶矩变量的方程需要一阶矩的方程以闭合。</p>
+<p><strong>平均速度（动量定理）</strong>：
+</p>
+$$
+\begin{aligned}
+\partial_t (m_a n_a u_r^a) &= -\nabla_m (m_a n_a u_r^a u_m^a + \delta_{rm} n_a T_a + \pi_{rm}^a) \\
+&\quad + e_a n_a (E_r + \epsilon_{rmn} u_m^a B_n) + R_r^a
+\end{aligned}
+$$<p>
+其中 $R_r^a(\boldsymbol{x},t) = m_a \int v_r \mathscr{K}^a \, d\boldsymbol{v}$ 是摩擦力密度。可见，一阶矩的方程需要二阶矩变量（式子中的温度 $T_a$、耗散压强张量 $\pi_{rm}^a$）的方程以闭合。</p>
+<p><strong>温度（能量方程）</strong>：
+</p>
+$$
+\begin{aligned}
+n_a \partial_t T_a &= -n_a \boldsymbol{u}^a \cdot \nabla T_a - \frac{2}{3} n_a T_a \nabla \cdot \boldsymbol{u}^a \\
+&\quad - \frac{2}{3} \pi_{mn}^a \nabla_m u_n^a - \frac{2}{3} \nabla_m q_m^a + \frac{2}{3} Q^a
+\end{aligned}
+$$<p>
+其中碰撞热交换率：
+</p>
+$$
+Q^a = \frac{1}{2} m_a \int |\boldsymbol{v} - \boldsymbol{u}^a|^2 \mathscr{K}^a \, d\boldsymbol{v}
+$$<p>
+可见，二阶矩方程需要三阶矩变量（式子中的热流 $q_m^a$）的方程以闭合。</p>
+<p>转换至单流体平衡方程，仍然存在相同的级列结构：</p>
+<ol>
+<li>
+<p>连续性方程：
+</p>
+$$
+\partial_t \rho = -\nabla \cdot (\rho \boldsymbol{u})
+$$</li>
+<li>
+<p>动量方程：
+</p>
+$$
+\begin{aligned}
+\partial_t \rho u_r &= -\nabla \cdot \left\{ \rho u_r u_i + \delta_{ri} \left[ \left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) T_e + \frac{\rho}{m_i} T_i \right] + \pi_{ri}^e + \pi_{ri}^i \right\} \\
+&\quad + \sigma E_r + \epsilon_{rim} j_i B_m
+\end{aligned}
+$$</li>
+<li>
+<p>温度方程（电子）：
+</p>
+$$
+\begin{aligned}
+\left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) \partial_t T_e
+&= - \left( \frac{Z \rho}{m_i} u_r - \frac{1}{e} j_r \right) \nabla_r T_e \\
+&\quad - \frac{2}{3} \left( \frac{Z \rho}{m_i} - \frac{\sigma}{e} \right) T_e \nabla_r \left( \frac{Z e \rho u_r - m_i j_r}{Z e \rho - m_i \sigma} \right) \\
+&\quad - \frac{2}{3} \pi_{ri}^e \nabla_r \left( \frac{Z e \rho u_r - m_i j_r}{Z e \rho - m_i \sigma} \right) - \frac{2}{3} \nabla_r q_r^e + \frac{2}{3} Q^e
+\end{aligned}
+$$</li>
+</ol>
+<p>温度方程（离子）：
+</p>
+$$
+\begin{aligned}
+\frac{\rho}{m_i} \partial_t T_i
+&= -\frac{\rho}{m_i} u_r \nabla_r T_i - \frac{2}{3} \frac{\rho}{m_i} T_i \nabla_r u_r \\
+&\quad - \frac{2}{3} \pi_{rs}^i \nabla_r u_s - \frac{2}{3} \nabla_r q_r^i + \frac{2}{3} Q^i
+\end{aligned}
+$$<p>电动力学方程：</p>
+<ol>
+<li>
+<p>电荷守恒方程：
+</p>
+$$
+\partial_t \sigma = -\nabla_r j_r
+$$</li>
+<li>
+<p>广义 Ohm 定律：
+</p>
+$$
+\begin{aligned}
+\partial_t j_r &= \nabla_i \left( \frac{Z e \rho \sigma u_r u_s - Z e \rho (j_r u_s + j_s u_r) + m_i j_r j_s}{Z e \rho - m_i \sigma} \right) \\
+&\quad + \frac{1}{m_e m_i} \nabla_r [(Z e \rho - m_i \sigma) T_e] + \frac{e}{m_e} \nabla_i (\pi_{ri}^e - Z \mu \pi_{ri}^i) \\
+&\quad + \frac{e}{m_e m_i} (Z e \rho - m_i \sigma) E_r + \frac{e}{m_e m_i} \epsilon_{rim} (Z e \rho u_i - m_i j_i) B_m \\
+&\quad - \frac{e}{m_e} R_r^e
+\end{aligned}
+$$</li>
+</ol>
+<p>显然，以上的方程组都具有级列结构，低阶矩依赖于高阶矩，一直到无限级，其中还涉及耗散压强张量、热流、摩擦力密度与热交换率等未知量。</p>
+<h3 id="其他平衡方程">其他平衡方程<a hidden class="anchor" aria-hidden="true" href="#其他平衡方程">#</a></h3>
+<ol>
+<li>
+<p>粒子流：
+</p>
+$$
+\begin{aligned}
+\partial_t \Gamma_r^a &= -\nabla_n \left( m_a^{-1} P_{rn}^a + u_n^a \Gamma_r^a \right) + \frac{e_a}{m_a} n_a E_r \\
+&\quad + \frac{e_a B}{m_a} \epsilon_{rmn} \Gamma_m^a b_n + \frac{1}{m_a} R_r^a
+\end{aligned}
+$$</li>
+<li>
+<p>热流：
+</p>
+$$
+\begin{aligned}
+\partial_t q_r^e &= -\nabla_n (S_{rn}^a + u_n^a q_r^a) - (2 q_{rmn}^a + q_m^a \delta_{rn}) \nabla_m u_n^a \\
+&\quad + \left( P_{rn}^a + \frac{3}{2} P_a \delta_{rn} \right) \frac{1}{m_a n_a} \nabla_m P_{mn}^a \\
+&\quad + \frac{e_a B}{m_a} \varepsilon_{rmn} q_m^a b_n + R_r^{a(3)} - \frac{1}{m_a n_a} \left( P_{rn}^a + \frac{3}{2} P_a \delta_{rn} \right) R_n^a
+\end{aligned}
+$$</li>
+<li>
+<p>压强张量：
+</p>
+$$
+\begin{aligned}
+\partial_t P_{rs}^a &= -\nabla_n (2 q_{rsn}^a + u_n^a P_{rs}^a) - (P_{rm}^a \delta_{sn} + P_{nm}^e \delta_{rn}) \nabla_m u_n^a \\
+&\quad + \frac{e_a B}{m_a} (\epsilon_{rpq} P_{sp}^a + \epsilon_{spq} P_{rp}^a) b_q + R_{rs}^{a(2)}
+\end{aligned}
+$$</li>
+<li>
+<p>四次矩压强张量：
+</p>
+$$
+\begin{aligned}
+\partial_t S_{rs}^a &= -\nabla_n (T_{rsn}^a + u_n^a S_{rs}^a) - (2 S_{rsmn}^u + S_{rm}^a \delta_{rm} + S_{nm}^a \delta_{rn}) \nabla_m u_n^a \\
+&\quad + (2 q_{rsn}^a + q_r^a \delta_{sn} + q_s^a \delta_{rn}) \frac{1}{m_a n_a} \nabla_m P_{mn}^a + \frac{e_a B}{m_a} (\epsilon_{rpq} S_{sp}^a + \epsilon_{spq} S_{rp}^a) b_q \\
+&\quad + R_{rs}^{(4)} - \frac{1}{m_a n_a} (2 q_{rsn}^a + q_r^a \delta_{sn} + q_s^a \delta_{rn}) R_m^a
+\end{aligned}
+$$</li>
+</ol>
+<p>每个矩方程包括含有高次矩的散度的一项，以及该矩本身乘以 $\boldsymbol{u}^a$ 的一项。所有方程包含涉及磁场的一项，以广义 Lorentz 力的形式表现。所有方程包含碰撞项的一份贡献，以广义摩擦力 $R^{a(n)}$ 的形式表现。</p>
+<h3 id="一个猜测">一个猜测<a hidden class="anchor" aria-hidden="true" href="#一个猜测">#</a></h3>
+<p>通过观察这些矩以及相关演化方程的形式，可以做出 $n$ 阶矩的演化方程的一个猜测：</p>
+<p><strong>$n$ 阶矩的表达式</strong>：
+</p>
+$$
+M^{(n)}_{i_1 i_2 \cdots i_n}(\boldsymbol{x},t) = \int (v_{i_1} - u_{i_1}^a)(v_{i_2} - u_{i_2}^a) \cdots (v_{i_n} - u_{i_n}^a) f^a \, d\boldsymbol{v}
+$$<p><strong>$n$ 阶矩演化方程的表达式</strong>：
+</p>
+$$
+\begin{aligned}
+\partial_t M^{(n)}_{i_1 \cdots i_n} &+ \nabla_j \left( u_j^a M^{(n)}_{i_1 \cdots i_n} + M^{(n+1)}_{j i_1 \cdots i_n} \right) \\
+&= -\sum_{k=1}^{n} M^{(n)}_{i_1 \cdots j \cdots i_n} \, \partial_j u_{i_k}^a + \frac{e_a}{m_a} \sum_{k=1}^{n} \epsilon_{i_k j l} B \, M^{(n)}_{i_1 \cdots j \cdots i_n} \\
+&\quad + \bigl( \text{低阶矩与一些梯度} \bigr) + R^{a(n)}
+\end{aligned}
+$$
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/">等离子体</a></li>
+      <li><a href="http://localhost:1313/tags/%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/">输运理论</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/">笔记</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Harmonicoscillator的个人网站</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<div class="busuanzi-footer">
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+</div></body>
+
+</html>
