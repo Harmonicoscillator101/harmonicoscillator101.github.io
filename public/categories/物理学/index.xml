@@ -6,8 +6,15 @@
     <description>Recent content in 物理学 on Harmonicoscillator的个人网站</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 29 Jul 2026 12:18:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/%E7%89%A9%E7%90%86%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>量子计算课程笔记</title>
+      <link>http://localhost:1313/posts/quantum-computing-note/</link>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/quantum-computing-note/</guid>
+      <description>&lt;p&gt;这是我在牛津大学Oriel College交换上Quantum Computing课程期间所记的笔记，也是我的一篇真正的学习笔记，而不是像之前的那些“复习笔记”那样。总体来讲，这个课程相比高年级或者研究生课程的量子信息与量子计算，更像是一个导论课程，我们并没有非常深入的算法学习与开发，也没有太多关于如何在物理上实现量子计算机的内容。但是这已经让量子计算这个领域足够吸引人。因此，&lt;a href=&#34;http://localhost:1313/files/A_Note_of_Quantum_Computing.pdf&#34;&gt;我将我的笔记储存在这里&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>等离子体输运理论(0)</title>
       <link>http://localhost:1313/posts/transport-of-plasma0/</link>

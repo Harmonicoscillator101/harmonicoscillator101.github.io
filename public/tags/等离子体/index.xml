@@ -6,8 +6,34 @@
     <description>Recent content in 等离子体 on Harmonicoscillator的个人网站</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>等离子体输运理论(9)</title>
+      <link>http://localhost:1313/posts/transport-of-plasma9/</link>
+      <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/transport-of-plasma9/</guid>
+      <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
+&lt;h2 id=&#34;准中性近似&#34;&gt;准中性近似&lt;/h2&gt;
+&lt;h3 id=&#34;特征时间尺度&#34;&gt;特征时间尺度&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;动理方程&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\partial_t f^a = \Phi^a + \mathscr{F}^a + \mathscr{K}^a
+$$&lt;p&gt;
+上一章已经充分论述严格求解之不可能，因此要采取近似。&lt;/p&gt;
+&lt;p&gt;回忆第二章讨论的特征时间尺度，有：
+&lt;/p&gt;
+$$
+\frac{1}{\tau_H^a} \sim \frac{V_{Ta}}{L_H}
+$$&lt;p&gt;
+$\tau_H^a$ 为流体力学特征时间，$L_H$ 为特征长度，且对于任意的流体力学量与电磁学量，有
+&lt;/p&gt;
+$$
+\frac{1}{L_H} \approx \mathrm{max} \left| \frac{\nabla A(x)}{A(x)} \right|
+$$&lt;p&gt;
+梯度由仪器设备决定，一般很大，所以特征长度要小得多，则流体力学时间会很长。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>等离子体输运理论(8)</title>
       <link>http://localhost:1313/posts/transport-of-plasma8/</link>

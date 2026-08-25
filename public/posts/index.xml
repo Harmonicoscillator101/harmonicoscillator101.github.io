@@ -6,8 +6,41 @@
     <description>Recent content in 文章 on Harmonicoscillator的个人网站</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>量子计算课程笔记</title>
+      <link>http://localhost:1313/posts/quantum-computing-note/</link>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/quantum-computing-note/</guid>
+      <description>&lt;p&gt;这是我在牛津大学Oriel College交换上Quantum Computing课程期间所记的笔记，也是我的一篇真正的学习笔记，而不是像之前的那些“复习笔记”那样。总体来讲，这个课程相比高年级或者研究生课程的量子信息与量子计算，更像是一个导论课程，我们并没有非常深入的算法学习与开发，也没有太多关于如何在物理上实现量子计算机的内容。但是这已经让量子计算这个领域足够吸引人。因此，&lt;a href=&#34;http://localhost:1313/files/A_Note_of_Quantum_Computing.pdf&#34;&gt;我将我的笔记储存在这里&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(9)</title>
+      <link>http://localhost:1313/posts/transport-of-plasma9/</link>
+      <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/transport-of-plasma9/</guid>
+      <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
+&lt;h2 id=&#34;准中性近似&#34;&gt;准中性近似&lt;/h2&gt;
+&lt;h3 id=&#34;特征时间尺度&#34;&gt;特征时间尺度&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;动理方程&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\partial_t f^a = \Phi^a + \mathscr{F}^a + \mathscr{K}^a
+$$&lt;p&gt;
+上一章已经充分论述严格求解之不可能，因此要采取近似。&lt;/p&gt;
+&lt;p&gt;回忆第二章讨论的特征时间尺度，有：
+&lt;/p&gt;
+$$
+\frac{1}{\tau_H^a} \sim \frac{V_{Ta}}{L_H}
+$$&lt;p&gt;
+$\tau_H^a$ 为流体力学特征时间，$L_H$ 为特征长度，且对于任意的流体力学量与电磁学量，有
+&lt;/p&gt;
+$$
+\frac{1}{L_H} \approx \mathrm{max} \left| \frac{\nabla A(x)}{A(x)} \right|
+$$&lt;p&gt;
+梯度由仪器设备决定，一般很大，所以特征长度要小得多，则流体力学时间会很长。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>等离子体输运理论(8)</title>
       <link>http://localhost:1313/posts/transport-of-plasma8/</link>
