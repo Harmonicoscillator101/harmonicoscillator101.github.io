@@ -6,8 +6,29 @@
     <description>Recent content in 笔记 on Harmonicoscillator的个人网站</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>等离子体输运理论(9)</title>
+      <link>http://localhost:1313/posts/transport-of-plasma10/</link>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/transport-of-plasma10/</guid>
+      <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
+&lt;h2 id=&#34;矩的分类&#34;&gt;矩的分类&lt;/h2&gt;
+&lt;h3 id=&#34;双流体的分类方式&#34;&gt;双流体的分类方式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;等离体动力学矩&lt;/strong&gt;：包含 $n_a$、$\boldsymbol{u}^a$、$T_a$，为参考局域平衡分布 $f^{a0}$ 的矩，它们的信息完全确定了参考态。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;非等离体动力学矩&lt;/strong&gt;：分布函数全部 Hermite 矩 $h^{a(m)}_{\cdots}(\boldsymbol{x},t)$ 的集合，在处于参考局域平衡态的时候，它们的值恒为零，因此它们确定了真实态对参考态的偏差。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;单流体的分类方式&#34;&gt;单流体的分类方式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;标量矩&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\begin{pmatrix} n_e \\ n_i \end{pmatrix}
+\Rightarrow
+\begin{pmatrix} \rho = \sum_a m_a n_a \\ \sigma = \sum_a e_a n_a \end{pmatrix}
+$$&lt;p&gt;&lt;strong&gt;矢量矩&lt;/strong&gt;：
+&lt;/p&gt;</description>
+    </item>
     <item>
       <title>量子计算课程笔记</title>
       <link>http://localhost:1313/posts/quantum-computing-note/</link>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>等离子体输运理论(10) | Harmonicoscillator的个人网站</title>
+<meta name="keywords" content="等离子体, 输运理论, 笔记">
+<meta name="description" content="Hermite 矩估计
+矩的分类
+双流体的分类方式
+等离体动力学矩：包含 $n_a$、$\boldsymbol{u}^a$、$T_a$，为参考局域平衡分布 $f^{a0}$ 的矩，它们的信息完全确定了参考态。
+非等离体动力学矩：分布函数全部 Hermite 矩 $h^{a(m)}_{\cdots}(\boldsymbol{x},t)$ 的集合，在处于参考局域平衡态的时候，它们的值恒为零，因此它们确定了真实态对参考态的偏差。
+
+单流体的分类方式
+标量矩：
+
+$$
+\begin{pmatrix} n_e \\ n_i \end{pmatrix}
+\Rightarrow
+\begin{pmatrix} \rho = \sum_a m_a n_a \\ \sigma = \sum_a e_a n_a \end{pmatrix}
+$$矢量矩：
+">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/transport-of-plasma10/"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.89ca4972ab5e6aaa05e9a0dae0c4bb64b26585bc79e36f5cf33614eea0283abe.css" integrity="sha256-icpJcqteaqoF6aDa4MS7ZLJlhbx5429c8zYU7qAoOr4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/images/mostima1.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/transport-of-plasma10/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="stylesheet" href="/css/custom.css">
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [
+      ['$', '$'],
+      ['\\(', '\\)']
+    ],
+    displayMath: [
+      ['$$', '$$'],
+      ['\\[', '\\]']
+    ],
+    processEscapes: true,
+    processEnvironments: true,
+    tags: 'ams',
+    packages: {
+      '[+]': ['mathtools', 'bm']
+    }
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Harmonicoscillator (Alt + H)">
+                <img src="http://localhost:1313/images/mostima.jpg" alt="" aria-label="logo"
+                    height="35">Harmonicoscillator</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/life/" title="生活">
+                    <span>生活</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/posts/">文章</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      等离子体输运理论(10)
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-08-27 00:00:00 +0000 UTC'>August 27, 2026</span>&nbsp;·&nbsp;<span>6 min</span>
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+    </div>
+  </header> <details class="toc"  open>
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
+
+    <div class="inner"><ul>
+            <li>
+                <a href="#hermite-%e7%9f%a9%e4%bc%b0%e8%ae%a1" aria-label="Hermite 矩估计">Hermite 矩估计</a><ul>
+                    
+            <li>
+                <a href="#%e7%9f%a9%e7%9a%84%e5%88%86%e7%b1%bb" aria-label="矩的分类">矩的分类</a><ul>
+                    
+            <li>
+                <a href="#%e5%8f%8c%e6%b5%81%e4%bd%93%e7%9a%84%e5%88%86%e7%b1%bb%e6%96%b9%e5%bc%8f" aria-label="双流体的分类方式">双流体的分类方式</a></li>
+            <li>
+                <a href="#%e5%8d%95%e6%b5%81%e4%bd%93%e7%9a%84%e5%88%86%e7%b1%bb%e6%96%b9%e5%bc%8f" aria-label="单流体的分类方式">单流体的分类方式</a></li>
+            <li>
+                <a href="#%e9%9d%9e%e6%b5%81%e4%bd%93%e5%8a%9b%e5%ad%a6%e7%9f%a9" aria-label="非流体力学矩">非流体力学矩</a></li></ul>
+            </li></ul>
+            </li>
+            <li>
+                <a href="#%e7%9f%a9%e7%9a%84%e6%bc%94%e5%8c%96%e6%96%b9%e7%a8%8b" aria-label="矩的演化方程">矩的演化方程</a><ul>
+                    
+            <li>
+                <a href="#%e6%b5%81%e4%bd%93%e5%8a%9b%e5%ad%a6%e5%b9%b3%e8%a1%a1%e6%96%b9%e7%a8%8b" aria-label="流体力学平衡方程">流体力学平衡方程</a><ul>
+                    
+            <li>
+                <a href="#%e8%bf%9e%e7%bb%ad%e6%80%a7%e6%96%b9%e7%a8%8b" aria-label="连续性方程">连续性方程</a></li>
+            <li>
+                <a href="#%e5%8a%a8%e9%87%8f%e5%b9%b3%e8%a1%a1%e6%96%b9%e7%a8%8b" aria-label="动量平衡方程">动量平衡方程</a></li>
+            <li>
+                <a href="#%e6%b8%a9%e5%ba%a6%e6%96%b9%e7%a8%8b%e7%94%b5%e5%ad%90" aria-label="温度方程（电子）">温度方程（电子）</a></li>
+            <li>
+                <a href="#%e6%b8%a9%e5%ba%a6%e6%96%b9%e7%a8%8b%e7%a6%bb%e5%ad%90" aria-label="温度方程（离子）">温度方程（离子）</a></li>
+            <li>
+                <a href="#maxwell-%e6%96%b9%e7%a8%8b%e7%bb%84" aria-label="Maxwell 方程组">Maxwell 方程组</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e9%9d%9e%e6%b5%81%e4%bd%93%e5%8a%9b%e5%ad%a6%e6%96%b9%e7%a8%8b" aria-label="非流体力学方程">非流体力学方程</a></li>
+            <li>
+                <a href="#%e7%9f%a9%e7%9a%84%e6%bc%94%e5%8c%96%e6%96%b9%e7%a8%8b%e7%9a%84%e5%85%b1%e5%90%8c%e7%bb%93%e6%9e%84" aria-label="矩的演化方程的共同结构">矩的演化方程的共同结构</a><ul>
+                    
+            <li>
+                <a href="#%e5%85%b1%e5%90%8c%e7%bb%93%e6%9e%84" aria-label="共同结构">共同结构</a></li></ul>
+            </li></ul>
+            </li>
+            <li>
+                <a href="#%e5%b9%bf%e4%b9%89%e6%91%a9%e6%93%a6" aria-label="广义摩擦">广义摩擦</a><ul>
+                    
+            <li>
+                <a href="#%e5%b9%bf%e4%b9%89%e6%91%a9%e6%93%a6%e6%a6%82%e8%bf%b0" aria-label="广义摩擦概述">广义摩擦概述</a></li>
+            <li>
+                <a href="#%e5%b9%bf%e4%b9%89%e6%91%a9%e6%93%a6%e9%a1%b9%e7%9a%84%e7%ba%bf%e6%80%a7%e9%83%a8%e5%88%86" aria-label="广义摩擦项的线性部分">广义摩擦项的线性部分</a><ul>
+                    
+            <li>
+                <a href="#%e7%94%b5%e5%ad%90%e5%b9%bf%e4%b9%89%e6%91%a9%e6%93%a6%e9%a1%b9%e7%ba%bf%e6%80%a7%e9%83%a8%e5%88%86" aria-label="电子广义摩擦项（$Q_e^{(M)}$）——线性部分">电子广义摩擦项（$Q_e^{(M)}$）——线性部分</a></li>
+            <li>
+                <a href="#%e7%a6%bb%e5%ad%90%e5%b9%bf%e4%b9%89%e6%91%a9%e6%93%a6%e9%a1%b9%e7%ba%bf%e6%80%a7%e9%83%a8%e5%88%86" aria-label="离子广义摩擦项（$Q_i^{(M)}$）——线性部分">离子广义摩擦项（$Q_i^{(M)}$）——线性部分</a></li></ul>
+            </li>
+            <li>
+                <a href="#%e5%b9%bf%e4%b9%89%e6%91%a9%e6%93%a6%e7%9a%84%e9%9d%9e%e7%ba%bf%e6%80%a7%e9%83%a8%e5%88%86" aria-label="广义摩擦的非线性部分">广义摩擦的非线性部分</a></li>
+            <li>
+                <a href="#%e5%bc%82%e7%b1%bb%e7%a2%b0%e6%92%9e%e7%9a%84%e4%ba%a4%e5%8f%89%e8%b4%a1%e7%8c%ae" aria-label="异类碰撞的交叉贡献">异类碰撞的交叉贡献</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</details>
+
+  <div class="post-content md-content"><h1 id="hermite-矩估计">Hermite 矩估计<a hidden class="anchor" aria-hidden="true" href="#hermite-矩估计">#</a></h1>
+<h2 id="矩的分类">矩的分类<a hidden class="anchor" aria-hidden="true" href="#矩的分类">#</a></h2>
+<h3 id="双流体的分类方式">双流体的分类方式<a hidden class="anchor" aria-hidden="true" href="#双流体的分类方式">#</a></h3>
+<p><strong>等离体动力学矩</strong>：包含 $n_a$、$\boldsymbol{u}^a$、$T_a$，为参考局域平衡分布 $f^{a0}$ 的矩，它们的信息完全确定了参考态。</p>
+<p><strong>非等离体动力学矩</strong>：分布函数全部 Hermite 矩 $h^{a(m)}_{\cdots}(\boldsymbol{x},t)$ 的集合，在处于参考局域平衡态的时候，它们的值恒为零，因此它们确定了真实态对参考态的偏差。</p>
+<hr>
+<h3 id="单流体的分类方式">单流体的分类方式<a hidden class="anchor" aria-hidden="true" href="#单流体的分类方式">#</a></h3>
+<p><strong>标量矩</strong>：
+</p>
+$$
+\begin{pmatrix} n_e \\ n_i \end{pmatrix}
+\Rightarrow
+\begin{pmatrix} \rho = \sum_a m_a n_a \\ \sigma = \sum_a e_a n_a \end{pmatrix}
+$$<p><strong>矢量矩</strong>：
+</p>
+$$
+\begin{pmatrix} \boldsymbol{u}^e \\ \boldsymbol{u}^i \end{pmatrix}
+\Rightarrow
+\begin{pmatrix} \rho \boldsymbol{u} = \sum_a m_a n_a \boldsymbol{u}^a \\ \boldsymbol{j} = \sum_a e_a n_a \boldsymbol{u}^a \end{pmatrix}
+$$<p><strong>当电流 $\boldsymbol{j}$ 不是有用量时</strong>：
+</p>
+$$
+\begin{pmatrix} \boldsymbol{u}^i \\ \boldsymbol{u}^e \end{pmatrix}
+\Rightarrow
+\begin{pmatrix} \rho \boldsymbol{u} = \sum_a m_a n_a \boldsymbol{u}^a \\ \boldsymbol{\Gamma}^e = n_e \boldsymbol{u}^e \end{pmatrix}
+$$<p>质量密度 $\rho$，质量流 $\rho \boldsymbol{u}$ 是守恒量，而温度 $T_e, T_i$ 是准守恒量，它们全部被定义为参考局域平衡态的矩，在它们的演化方程中几乎没有来自碰撞项的任何贡献。</p>
+<hr>
+<h3 id="非流体力学矩">非流体力学矩<a hidden class="anchor" aria-hidden="true" href="#非流体力学矩">#</a></h3>
+<p>电动力学矩包括电荷密度 $\sigma$ 和电流 $\boldsymbol{j}$，其中电荷密度不出现在流体方程中，它们仅仅出现在 Poisson 方程中，根据上一节的讨论，可以令 $\sigma \approx 0$。电流项 $\boldsymbol{j}$ 不是一个守恒量，它包含碰撞项的贡献，主要由摩擦力项 $\boldsymbol{R}$ 带来，对于粒子流 $\boldsymbol{\Gamma}^a$ 来说也是一样的。</p>
+<p><strong>无量纲化</strong>：
+</p>
+$$
+\begin{aligned}
+j_r &= e n_e \left( \frac{T_e}{m_e} \right)^{1/2} h_r^{(1)} \\
+\Gamma^e_r &= n_a \left( \frac{T_a}{m_a} \right)^{1/2} h_r^{a(1)} \\
+h_r^{(1)} &= -h_r^{e(1)} + \left( \frac{m_e}{T_e} \right)^{1/2} u_r
+\end{aligned}
+$$<p>
+注意 $h_r^{(1)}$ 和 $h_r^{a(1)}$ 并不是 Hermite 矩，它们根据约束条件并不恒为 0。</p>
+<hr>
+<p>以下特殊非流体力学矩除了物理重要性外，还具有一个共同性质：</p>
+<ul>
+<li>粒子流：$\Gamma_r^e \rightarrow h_r^{a(1)}$</li>
+<li>电流：$j_r \rightarrow h_r^{(1)}$</li>
+<li>压强张量：$\pi_{rs}^a \rightarrow h_{rs}^{a(2)}$</li>
+<li>热流：$q_r^a \rightarrow h_r^{a(3)}$</li>
+</ul>
+<p>它们的演化方程中出现一个<strong>源项</strong>，该源项是流体力学矩的函数；所有其他非流体力学矩的方程<strong>不具有</strong>这种源项。</p>
+<h1 id="矩的演化方程">矩的演化方程<a hidden class="anchor" aria-hidden="true" href="#矩的演化方程">#</a></h1>
+<h2 id="流体力学平衡方程">流体力学平衡方程<a hidden class="anchor" aria-hidden="true" href="#流体力学平衡方程">#</a></h2>
+<p><strong>流体描述</strong>：我们已经知道，无穷级列矩方程的求解是不可能的，因此需要对级列方程在某个级别做合理的截短近似。为了获得这个近似的流体力学矩的闭合方程组，必须要获得特殊非流体力学矩作为在同一个时空点的流体力学矩泛函的有效近似。</p>
+<p>因此这里要做的就是推导矩的演化方程的一般形式，并且分析其共同结构。</p>
+<p>写出流体力学平衡方程后，再对其运用局域准中性条件、压强张量与热流的矩展开和无量纲量，重写连续性方程、动量平衡方程以及两种粒子的温度方程。</p>
+<h3 id="连续性方程">连续性方程<a hidden class="anchor" aria-hidden="true" href="#连续性方程">#</a></h3>
+$$
+\partial_t \rho = -\nabla \cdot (\rho \boldsymbol{u})
+$$<h3 id="动量平衡方程">动量平衡方程<a hidden class="anchor" aria-hidden="true" href="#动量平衡方程">#</a></h3>
+$$
+\begin{aligned}
+\partial_t (\rho u_r) &= -\nabla_s (\rho u_r u_s) - \nabla_s (n_e T_e + n_i T_i) \\
+&\quad - \sqrt{2} \nabla_s \bigl( n_e T_e h_{rs}^{e(2)} + n_i T_i h_{rs}^{i(2)} \bigr) \\
+&\quad + \frac{e}{c} n_e \left( \frac{T_e}{m_e} \right)^{1/2} \varepsilon_{rsm} h_s^{(1)} B_m
+\end{aligned}
+$$<h3 id="温度方程电子">温度方程（电子）<a hidden class="anchor" aria-hidden="true" href="#温度方程电子">#</a></h3>
+$$
+\begin{aligned}
+\partial_t T_e &= -u \cdot \nabla T_e - \frac{2}{3} T_e \nabla \cdot u + \left( \frac{T_e}{m_e} \right)^{1/2} h_s^{(1)} \nabla T_e \\
+&\quad + \frac{2}{3} T_e \nabla \cdot \left[ \left( \frac{T_e}{m_e} \right)^{1/2} \boldsymbol{h}^{(1)} \right] - \frac{2}{3} \sqrt{2} T_e h_{rs}^{e(2)} \nabla_r u_s \\
+&\quad + \frac{2}{3} \sqrt{2} T_e h_{rs}^{e(2)} \nabla_r \left[ \left( \frac{T_e}{m_e} \right)^{1/2} h_s^{(1)} \right] \\
+&\quad - \frac{\sqrt{10}}{3 n_e} \nabla_r \left[ n_e T_e \left( \frac{T_e}{m_e} \right)^{1/2} h_r^{e(3)} \right] \\
+&\quad - \frac{1}{Z} Q^{(2)} - \frac{2}{3} T_e h_s^{(1)} Q_r^{(1)}
+\end{aligned}
+$$<h3 id="温度方程离子">温度方程（离子）<a hidden class="anchor" aria-hidden="true" href="#温度方程离子">#</a></h3>
+$$
+\begin{aligned}
+\partial_t T_i &= -u \cdot \nabla T_i - \frac{2}{3} T_i \nabla \cdot u - \frac{2}{3} \sqrt{2} T_i h_{rs}^{i(2)} \nabla_r u_s \\
+&\quad - \frac{\sqrt{10}}{3 n_i} \nabla_r \left[ n_i T_i \left( \frac{T_i}{m_i} \right)^{1/2} h_r^{i(3)} \right] + Q^{(2)}
+\end{aligned}
+$$<p>这里出现的碰撞项 $Q^{(1)}_r$ 与 $Q^{(2)}$ 都是量级为 $\mu$ 的量，而温度方程 (e) 的最后一项很小，因此两个温度量可以当作准守恒量。</p>
+<p>流体力学平衡方程的结构中，第一组仅仅包含流体力学项，第二组则包含非流体力学矩，以及很小的碰撞项贡献。</p>
+<h3 id="maxwell-方程组">Maxwell 方程组<a hidden class="anchor" aria-hidden="true" href="#maxwell-方程组">#</a></h3>
+$$
+\begin{aligned}
+\nabla \cdot \mathbf{E} &= 4\pi\sigma \;(\approx 0), \\
+\nabla \times \mathbf{E} &= -\frac{1}{c} \partial_t \mathbf{B}, \\
+\nabla \cdot \mathbf{B} &= 0, \\
+\nabla \times \mathbf{B} &= \frac{4\pi e}{c} n_e \left( \frac{T_e}{m_e} \right)^{1/2} \boldsymbol{h}^{(1)}
+\end{aligned}
+$$<h2 id="非流体力学方程">非流体力学方程<a hidden class="anchor" aria-hidden="true" href="#非流体力学方程">#</a></h2>
+<p>这一部分主要包含电动力学矩方程。之前已经得到过，对于慢运动，主要有以下两个方程：</p>
+<p><strong>电荷守恒约束</strong>：
+</p>
+$$
+\nabla_n (n_e T_e^{1/2} h_n^{(1)}) = 0
+$$<p><strong>广义 Ohm 定律</strong>：
+</p>
+$$
+\begin{aligned}
+\partial_t h_r^{(1)} &= \left( \frac{m_e}{T_e} \right)^{1/2} \left( \frac{e}{m_e} E_r + \frac{1}{m_e n_e} \nabla_r (n_e T_e) + \frac{e}{m_e c} \epsilon_{rnm} u_m B_n \right) \\
+&\quad - \frac{e}{m_e c} \epsilon_{rnm} h_n^{(1)} B_n + Q_r^{(1)} + U_r^{(1)} + C_r^{(1)} + N_r^{(1)}
+\end{aligned}
+$$<p>其中 $Q_r^{(1)}$ 是无量纲摩擦力，后面三项展开形式略，碰撞项贡献：
+</p>
+$$
+Q_{r_1 r_2 \cdots}^{a(m)} = n_a^{-1} \int d\mathbf{v} \, H_{r_1 r_2 \cdots}^{(m)} \bigl( (m_a/T_a)^{1/2} (\mathbf{v} - \mathbf{u}^a) \bigr) \chi^a
+$$<h2 id="矩的演化方程的共同结构">矩的演化方程的共同结构<a hidden class="anchor" aria-hidden="true" href="#矩的演化方程的共同结构">#</a></h2>
+<p>作者将级列方程在 29M 近似上截短，得到两种矩方程如下：</p>
+<p><strong>(A) 矢量矩</strong>
+</p>
+$$
+\begin{aligned}
+\partial_t h_r^{\alpha(3)} &= -\sqrt{\frac{5}{2}} \left( \frac{T_\alpha}{m_\alpha} \right)^{1/2} \frac{1}{T_\alpha} \nabla_r T_\alpha + \frac{e_\alpha}{m_\alpha c} \epsilon_{rnm} h_m^{\alpha(3)} B_n \\
+&\quad + Q_r^{\alpha(3)} + U_r^{\alpha(3)} + D_r^{\alpha(3)} + C_r^{\alpha(3)} + N_r^{\alpha(3)} \\
+\partial_t h_r^{\alpha(5)} &= \frac{e_\alpha}{m_\alpha c} \epsilon_{rnm} h_m^{\alpha(5)} B_n + Q_r^{\alpha(5)} + U_r^{\alpha(5)} + D_r^{\alpha(5)} + C_r^{\alpha(5)} + N_r^{\alpha(5)} \\
+\partial_t h_r^{\alpha(7)} &= \frac{e_\alpha}{m_\alpha c} \epsilon_{rnm} h_m^{\alpha(7)} B_n + Q_r^{\alpha(7)} + U_r^{\alpha(7)} + D_r^{\alpha(7)} + C_r^{\alpha(7)} + N_r^{\alpha(7)}
+\end{aligned}
+$$<p><strong>(B) 张量矩</strong>
+</p>
+$$
+\begin{aligned}
+\partial_t h_{rs}^{\alpha(2)} &= -\sqrt{2} \mathscr{F}_{rs|pq} \nabla_p u_q + \frac{2e_\alpha}{m_\alpha c} \mathscr{F}_{rs|pq} \epsilon_{pnm} h_q^{\alpha(2)} B_n \\
+&\quad + Q_{rs}^{\alpha(2)} + U_{rs}^{\alpha(2)} + D_{rs}^{\alpha(2)} + C_{rs}^{\alpha(2)} + N_{rs}^{\alpha(2)} \\
+\partial_t h_{rs}^{\alpha(4)} &= \frac{2e_\alpha}{m_\alpha c} \mathscr{F}_{rs|pq} \epsilon_{pnm} h_q^{\alpha(4)} B_n + Q_{rs}^{\alpha(4)} + U_{rs}^{\alpha(4)} + D_{rs}^{\alpha(4)} + C_{rs}^{\alpha(4)} + N_{rs}^{\alpha(4)} \\
+\partial_t h_{rs}^{\alpha(6)} &= \frac{2e_\alpha}{m_\alpha c} \mathscr{F}_{rs|pq} \epsilon_{pnm} h_{qm}^{\alpha(6)} B_n + Q_{rs}^{\alpha(6)} + U_{rs}^{\alpha(6)} + D_{rs}^{\alpha(6)} + C_{rs}^{\alpha(6)} + N_{rs}^{\alpha(6)}
+\end{aligned}
+$$<p>其中对称化算符：
+</p>
+$$
+\mathscr{F}_{rs|pq} = \frac{1}{2} \left( \delta_{r,p} \delta_{s,q} + \delta_{r,q} \delta_{s,p} - \frac{1}{3} \delta_{r,s} \delta_{p,q} \right)
+$$<h3 id="共同结构">共同结构<a hidden class="anchor" aria-hidden="true" href="#共同结构">#</a></h3>
+<ol>
+<li><strong>流体力学变量 $\rho$、$\boldsymbol{u}$、$T$ 的梯度与电磁场变量 $\boldsymbol{E}$ 与 $\boldsymbol{B}$</strong>：这一部分为源项，从而使得非流体力学矩能够用流体力学矩表达。仅在于 $h_r^{(1)}, h_r^{\alpha(1)}, h_{rs}^{\alpha(2)}, h_r^{\alpha(3)}$ 的方程中源项不为零。</li>
+<li><strong>来源于磁场项的 Lorentz 力</strong>：正比于 n 次矩与磁场的矢积。</li>
+<li><strong>标志广义摩擦力的碰撞项 $Q^{\alpha(n)}_{\cdots}$</strong>：包含线性和非线性贡献。</li>
+<li><strong>一个高项 $U^{\alpha(n)}_{\cdots}$</strong>：包含动理方程的流项产生 $n+1$ 次矩，由于在 29M 近似的截短，没有高于 7 次的高阶矩。</li>
+<li><strong>一个低项 $D^{\alpha(n)}_{\cdots}$</strong>：涉及较低的 $n-1$ 次矩的空间导数。</li>
+<li><strong>一组涉及 n 次矩的运流项 $C^{\alpha(n)}_{\cdots}$</strong>，以及它的导数。</li>
+<li><strong>非线性项 $N^{\alpha(n)}_{\cdots}$</strong>：包含广义摩擦项之外的其他非线性项。</li>
+<li><strong>电场项 $\boldsymbol{E}$ 只出现在一次矩的源项之中</strong>。</li>
+</ol>
+<h1 id="广义摩擦">广义摩擦<a hidden class="anchor" aria-hidden="true" href="#广义摩擦">#</a></h1>
+<h2 id="广义摩擦概述">广义摩擦概述<a hidden class="anchor" aria-hidden="true" href="#广义摩擦概述">#</a></h2>
+<p>现在来处理广义碰撞项，经过变换后，问题归结为四种碰撞项中系数的计算：</p>
+<ul>
+<li>在 21M 近似下，广义摩擦项（碰撞项）可表示为 <strong>Hermite 矩</strong>的线性与非线性组合。</li>
+<li>区分四种碰撞类型：电子-电子（e-e）、电子-离子（e-i）、离子-离子（i-i）、离子-电子（i-e）。</li>
+<li>线性部分：$Q^{(M)} = \sum_N C_{MN} h^{(N)}$，非线性部分：$Q^{(M)} = \sum_{N,P} D_{M|NP} h^{(N)} h^{(P)}$。</li>
+<li>特征弛豫时间：
+
+$$
+  \frac{1}{\tau_e} = \frac{4\sqrt{2\pi} Z^2 e^4 n_e \ln\Lambda}{3 m_e^{1/2} T_e^{3/2}}, \qquad
+  \frac{1}{\tau_i} = \frac{4\sqrt{2\pi} Z^4 e^4 n_i \ln\Lambda}{3 m_i^{1/2} T_i^{3/2}}
+  $$</li>
+</ul>
+<h2 id="广义摩擦项的线性部分">广义摩擦项的线性部分<a hidden class="anchor" aria-hidden="true" href="#广义摩擦项的线性部分">#</a></h2>
+<h3 id="电子广义摩擦项线性部分">电子广义摩擦项（$Q_e^{(M)}$）——线性部分<a hidden class="anchor" aria-hidden="true" href="#电子广义摩擦项线性部分">#</a></h3>
+<ul>
+<li>
+<p>线性碰撞矩阵：
+</p>
+$$
+  C_{MN}^e = -\frac{1}{\tau_e} \left( \alpha_{MN} + Z^{-1} \beta_{MN} \right)
+  $$<p>
+其中 $\alpha_{MN}$（e-i 贡献）占主导，$\beta_{MN}$（e-e 贡献）含小因子 $Z^{-1}$。</p>
+</li>
+<li>
+<p>矢量矩耦合（$M=1,3,5$）：
+</p>
+$$
+  \begin{aligned}
+  \tau_e Q_e^{(1)} &= -c_{11}^e h_e^{(1)} - c_{13}^e h_e^{(3)} - c_{15}^e h_e^{(5)} - \cdots, \\
+  \tau_e Q_e^{(3)} &= -c_{31}^e h_e^{(1)} - c_{33}^e h_e^{(3)} - c_{35}^e h_e^{(5)} - \cdots, \\
+  \tau_e Q_e^{(5)} &= -c_{51}^e h_e^{(1)} - c_{53}^e h_e^{(3)} - c_{55}^e h_e^{(5)} - \cdots,
+  \end{aligned}
+  $$<p>
+系数 $c_{MN}^e = \alpha_{MN} + Z^{-1} \beta_{MN}$，且 $c_{MN}^e = c_{NM}^e$。</p>
+</li>
+<li>
+<p>张量矩耦合（$M=2,4,6$）：
+</p>
+$$
+  \tau_e Q_e^{(2)} = -c_{22}^e h_e^{(2)} - c_{24}^e h_e^{(4)} - c_{26}^e h_e^{(6)} - \cdots,
+  $$<p>
+类似有 $Q_e^{(4)}, Q_e^{(6)}$。</p>
+</li>
+</ul>
+<h3 id="离子广义摩擦项线性部分">离子广义摩擦项（$Q_i^{(M)}$）——线性部分<a hidden class="anchor" aria-hidden="true" href="#离子广义摩擦项线性部分">#</a></h3>
+<ul>
+<li>
+<p>线性碰撞矩阵仅来自 <strong>离子-离子碰撞</strong>：
+</p>
+$$
+  C_{MN}^i = -\frac{1}{\tau_i} \beta'_{MN}
+  $$</li>
+<li>
+<p>矢量矩耦合（$M=1,3,5,7$）：
+</p>
+$$
+  \tau_i Q_i^{(1)} = -c_{11}^i h_i^{(1)} - c_{13}^i h_i^{(3)} - c_{15}^i h_i^{(5)} - \cdots,
+  $$<p>
+其中系数 $c_{MN}^i$ 对称。</p>
+</li>
+<li>
+<p>张量矩耦合（$M=2,4,6$）：
+</p>
+$$
+  \tau_i Q_i^{(2)} = -c_{22}^i h_i^{(2)} - c_{24}^i h_i^{(4)} - c_{26}^i h_i^{(6)} - \cdots,
+  $$<p>
+类似有 $Q_i^{(4)}, Q_i^{(6)}$。</p>
+</li>
+<li>
+<p><strong>离子-电子碰撞</strong>贡献为 $O(\mu)$，在 21M 近似下忽略。</p>
+</li>
+</ul>
+<h2 id="广义摩擦的非线性部分">广义摩擦的非线性部分<a hidden class="anchor" aria-hidden="true" href="#广义摩擦的非线性部分">#</a></h2>
+<ul>
+<li>
+<p>非线性系数：
+</p>
+$$
+  D_{M|NP}^{e} = \frac{1}{\tau_e} \left( d_{M|NP}^{\text{(e-i)}} + Z^{-1} d_{M|NP}^{\text{(e-e)}} \right)
+  $$</li>
+<li>
+<p>在 13M 近似下，典型非线性项：
+</p>
+$$
+  Q_e^{(1)} \supset \frac{1}{\tau_e} d_{1|1,2}\, h_e^{(1)} h_e^{(2)}, \qquad
+  Q_e^{(2)} \supset \frac{1}{\tau_e} d_{2|1,1}\, h_e^{(1)} h_e^{(1)}
+  $$</li>
+<li>
+<p>离子碰撞的非线性项仅来自 <strong>离子-离子碰撞</strong>：
+</p>
+$$
+  Q_i^{(M)} \supset \sum_{N,P} D_{M|NP}^{i}\, h_i^{(N)} h_i^{(P)}
+  $$<p>
+系数 $D_{M|NP}^{i} \sim \tau_i^{-1}$。</p>
+</li>
+</ul>
+<h2 id="异类碰撞的交叉贡献">异类碰撞的交叉贡献<a hidden class="anchor" aria-hidden="true" href="#异类碰撞的交叉贡献">#</a></h2>
+<ul>
+<li><strong>电子-离子碰撞</strong>在电子方程中占主导（线性部分 $\alpha_{MN}$），并贡献非线性项。</li>
+<li><strong>离子-电子碰撞</strong>对离子矩的贡献为 $O(\mu)$，可忽略：
+
+$$
+  C_{MN}^{i\text{(i-e)}} \approx 0, \qquad D_{M|NP}^{i\text{(i-e)}} \approx 0
+  $$</li>
+<li><strong>温度交换项</strong>（出现在电子和离子的温度方程中）：
+
+$$
+  Q^{(2)} = -\frac{2Z}{\tau_e}\,\mu\,(T_i - T_e), \qquad \mu = \frac{m_e}{m_i}
+  $$
+该过程极慢（弛豫时间 $\sim \tau_e/\mu$），因此 $T_e$ 与 $T_i$ 为准守恒量。</li>
+</ul>
+<p><strong>广义摩擦的内禀属性</strong>：广义摩擦（即碰撞项）与 Hermite 矩（即矩变量，也可称为“流”）之间的关系（如线性关系 $Q = C h$）中的系数 $C$（以及非线性系数 $D$）完全由碰撞算符的矩阵元决定，而与宏观的梯度、电场、磁场等外部条件无关。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/">等离子体</a></li>
+      <li><a href="http://localhost:1313/tags/%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/">输运理论</a></li>
+      <li><a href="http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/">笔记</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Harmonicoscillator的个人网站</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<div class="busuanzi-footer">
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+</div></body>
+
+</html>
