@@ -18,7 +18,21 @@ summaryLength = 140
   ShowToc = true
   TocOpen = true
   ShowPostNavLinks = true
-  comments = false
+  comments = true
+
+[params.giscus]
+  repo = 'Harmonicoscillator101/harmonicoscillator101.github.io'
+  repoID = 'R_kgDOTl63fA'
+  category = 'General'
+  categoryID = 'DIC_kwDOTl63fM4DCUFC'
+  mapping = 'pathname'
+  strict = '0'
+  reactionsEnabled = '1'
+  emitMetadata = '0'
+  inputPosition = 'bottom'
+  theme = 'preferred_color_scheme'
+  lang = 'zh-CN'
+  loading = 'lazy'
 
 [params.busuanzi]
     enable = true
