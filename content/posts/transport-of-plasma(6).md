@@ -3,6 +3,8 @@ title: "等离子体输运理论(6)"
 date: 2026-08-08
 draft: false
 math: true
+series: ['plasma-transport']
+series_order: 6
 tags: ["等离子体", "输运理论","笔记"]
 categories: ["物理"]
 ---

@@ -1,0 +1,62 @@
+{{- with .Params.series }}
+  {{- $current := $ }}
+  {{- $seriesName := index . 0 }}
+  {{- $seriesPages := where site.RegularPages `Params.series` `intersect` (slice $seriesName) }}
+  {{- $seriesPages = sort $seriesPages `Params.series_order` `asc` }}
+  {{- $currentIndex := 0 }}
+  {{- $previous := false }}
+  {{- $next := false }}
+  {{- range $index, $page := $seriesPages }}
+    {{- if eq $page.RelPermalink $current.RelPermalink }}
+      {{- $currentIndex = $index }}
+      {{- if gt $index 0 }}
+        {{- $previous = index $seriesPages (sub $index 1) }}
+      {{- end }}
+      {{- if lt (add $index 1) (len $seriesPages) }}
+        {{- $next = index $seriesPages (add $index 1) }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- $termPages := $current.GetTerms `series` }}
+
+  <nav class='series-nav' aria-label='&#31995;&#21015;&#25991;&#31456;&#23548;&#33322;'>
+    <div class='series-nav-header'>
+      <span class='series-nav-label'>&#31995;&#21015;</span>
+      {{- with index $termPages 0 }}
+      <a class='series-nav-title' href='{{ .RelPermalink }}'>{{ .LinkTitle }}</a>
+      {{- end }}
+      <span class='series-nav-progress'>&#31532; {{ add $currentIndex 1 }} / {{ len $seriesPages }} &#31687;</span>
+    </div>
+
+    <details class='series-nav-chapters'>
+      <summary>&#26597;&#30475;&#20840;&#37096;&#31456;&#33410;</summary>
+      <ol>
+        {{- range $seriesPages }}
+        <li{{ if eq .RelPermalink $current.RelPermalink }} class='is-current'{{ end }}>
+          <a href='{{ .RelPermalink }}'{{ if eq .RelPermalink $current.RelPermalink }} aria-current='page'{{ end }}>
+            <span class='series-nav-number'>{{ printf `%02d` (int .Params.series_order) }}</span>
+            <span>{{ .Title }}</span>
+          </a>
+        </li>
+        {{- end }}
+      </ol>
+    </details>
+
+    {{- if or $previous $next }}
+    <div class='series-nav-links'>
+      {{- with $previous }}
+      <a class='series-nav-prev' href='{{ .RelPermalink }}'>
+        <span>&#31995;&#21015;&#19978;&#19968;&#31687;</span>
+        <strong>{{ .Title }}</strong>
+      </a>
+      {{- end }}
+      {{- with $next }}
+      <a class='series-nav-next' href='{{ .RelPermalink }}'>
+        <span>&#31995;&#21015;&#19979;&#19968;&#31687;</span>
+        <strong>{{ .Title }}</strong>
+      </a>
+      {{- end }}
+    </div>
+    {{- end }}
+  </nav>
+{{- end }}

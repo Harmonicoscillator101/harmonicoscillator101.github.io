@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>笔记 on Harmonicoscillator的个人网站</title>
-    <link>http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/</link>
+    <link>http://localhost:63214/tags/%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in 笔记 on Harmonicoscillator的个人网站</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 27 Aug 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:63214/tags/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>等离子体输运理论(9)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma10/</link>
+      <title>等离子体输运理论(10)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma10/</link>
       <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma10/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma10/</guid>
       <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
 &lt;h2 id=&#34;矩的分类&#34;&gt;矩的分类&lt;/h2&gt;
 &lt;h3 id=&#34;双流体的分类方式&#34;&gt;双流体的分类方式&lt;/h3&gt;
@@ -31,16 +31,16 @@ $$&lt;p&gt;&lt;strong&gt;矢量矩&lt;/strong&gt;：
     </item>
     <item>
       <title>量子计算课程笔记</title>
-      <link>http://localhost:1313/posts/quantum-computing-note/</link>
+      <link>http://localhost:63214/posts/quantum-computing-note/</link>
       <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/quantum-computing-note/</guid>
-      <description>&lt;p&gt;这是我在牛津大学Oriel College交换上Quantum Computing课程期间所记的笔记，也是我的一篇真正的学习笔记，而不是像之前的那些“复习笔记”那样。总体来讲，这个课程相比高年级或者研究生课程的量子信息与量子计算，更像是一个导论课程，我们并没有非常深入的算法学习与开发，也没有太多关于如何在物理上实现量子计算机的内容。但是这已经让量子计算这个领域足够吸引人。因此，&lt;a href=&#34;http://localhost:1313/files/A_Note_of_Quantum_Computing.pdf&#34;&gt;我将我的笔记储存在这里&lt;/a&gt;。&lt;/p&gt;</description>
+      <guid>http://localhost:63214/posts/quantum-computing-note/</guid>
+      <description>&lt;p&gt;这是我在牛津大学Oriel College交换上Quantum Computing课程期间所记的笔记，也是我的一篇真正的学习笔记，而不是像之前的那些“复习笔记”那样。总体来讲，这个课程相比高年级或者研究生课程的量子信息与量子计算，更像是一个导论课程，我们并没有非常深入的算法学习与开发，也没有太多关于如何在物理上实现量子计算机的内容。但是这已经让量子计算这个领域足够吸引人。因此，&lt;a href=&#34;http://localhost:63214/files/A_Note_of_Quantum_Computing.pdf&#34;&gt;我将我的笔记储存在这里&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>等离子体输运理论(9)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma9/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma9/</link>
       <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma9/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma9/</guid>
       <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
 &lt;h2 id=&#34;准中性近似&#34;&gt;准中性近似&lt;/h2&gt;
 &lt;h3 id=&#34;特征时间尺度&#34;&gt;特征时间尺度&lt;/h3&gt;
@@ -64,9 +64,9 @@ $$&lt;p&gt;
     </item>
     <item>
       <title>等离子体输运理论(8)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma8/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma8/</link>
       <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma8/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma8/</guid>
       <description>&lt;h1 id=&#34;等离体宏观量的级列结构&#34;&gt;等离体宏观量的级列结构&lt;/h1&gt;
 &lt;h2 id=&#34;不同阶矩&#34;&gt;不同阶矩&lt;/h2&gt;
 &lt;h3 id=&#34;零阶矩&#34;&gt;零阶矩&lt;/h3&gt;
@@ -99,9 +99,9 @@ $$&lt;p&gt;&lt;strong&gt;电动力学量&lt;/strong&gt;：&lt;/p&gt;</descriptio
     </item>
     <item>
       <title>等离子体输运理论(6)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma6/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma6/</link>
       <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma6/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma6/</guid>
       <description>&lt;h1 id=&#34;等离体动理方程&#34;&gt;等离体动理方程&lt;/h1&gt;
 &lt;h2 id=&#34;landau-方程&#34;&gt;Landau 方程&lt;/h2&gt;
 &lt;h3 id=&#34;传播函数&#34;&gt;传播函数&lt;/h3&gt;
@@ -116,9 +116,9 @@ $$&lt;p&gt;关联函数的形式解：通过传播函数，运用常数变易法
     </item>
     <item>
       <title>等离子体输运理论(7)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma7/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma7/</link>
       <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma7/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma7/</guid>
       <description>&lt;h1 id=&#34;等离体的宏观描述与矩的导出&#34;&gt;等离体的宏观描述与矩的导出&lt;/h1&gt;
 &lt;h2 id=&#34;局域分布函数&#34;&gt;局域分布函数&lt;/h2&gt;
 &lt;h3 id=&#34;输运理论概念&#34;&gt;输运理论概念&lt;/h3&gt;
@@ -141,9 +141,9 @@ $b^a(\boldsymbol{q},\boldsymbol{v};t)$ 表示相空间中的任意函数。注�
     </item>
     <item>
       <title>等离子体输运理论(5)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma5/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma5/</link>
       <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma5/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma5/</guid>
       <description>&lt;h1 id=&#34;等离体动理方程&#34;&gt;等离体动理方程&lt;/h1&gt;
 &lt;h2 id=&#34;相互作用带电粒子系统&#34;&gt;相互作用带电粒子系统&lt;/h2&gt;
 &lt;h3 id=&#34;含相互作用势的-hamilton-量&#34;&gt;含相互作用势的 Hamilton 量&lt;/h3&gt;
@@ -168,9 +168,9 @@ $$&lt;p&gt;
     </item>
     <item>
       <title>等离子体输运理论(4)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma4/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma4/</link>
       <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma4/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma4/</guid>
       <description>&lt;h1 id=&#34;等离体分布函数的导出与微观机制&#34;&gt;等离体分布函数的导出与微观机制&lt;/h1&gt;
 &lt;h2 id=&#34;相空间分布函数&#34;&gt;相空间分布函数&lt;/h2&gt;
 &lt;h3 id=&#34;相空间分布函数-1&#34;&gt;相空间分布函数&lt;/h3&gt;
@@ -198,9 +198,9 @@ $$&lt;h3 id=&#34;约化分布函数&#34;&gt;约化分布函数&lt;/h3&gt;
     </item>
     <item>
       <title>等离子体输运理论(3)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma3/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma3/</link>
       <pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma3/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma3/</guid>
       <description>&lt;h1 id=&#34;带电粒子在电磁场中的运动及如何将其纳入hamilton力学体系&#34;&gt;带电粒子在电磁场中的运动及如何将其纳入Hamilton力学体系&lt;/h1&gt;
 &lt;h2 id=&#34;均匀场下的漂移&#34;&gt;均匀场下的漂移&lt;/h2&gt;
 &lt;h3 id=&#34;回旋磁矩&#34;&gt;回旋磁矩&lt;/h3&gt;
@@ -224,26 +224,26 @@ $$&lt;p&gt;
     </item>
     <item>
       <title>等离子体输运理论(0)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma0/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma0/</link>
       <pubDate>Wed, 29 Jul 2026 12:18:27 +0800</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma0/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma0/</guid>
       <description>&lt;h1 id=&#34;等离子体输运理论0&#34;&gt;等离子体输运理论(0)&lt;/h1&gt;
 &lt;h2 id=&#34;写在开始之前&#34;&gt;写在开始之前&lt;/h2&gt;
 &lt;p&gt;花了一个晚上终于建好了自己的个人网站，我总想着要不写点什么吧！以防这个网站放在这里空荡荡的，但是思考了很久，除了上传了两篇笔记之外也没有再干什么。最后还是决定，把一直在学习和工作的和等离子体输运理论有关的东西发布出来，同时借此反向督促自己回顾过去的东西。我知道没什么人会访问这个网站，也许这样做只是为了杀时间罢了。&lt;/p&gt;</description>
     </item>
     <item>
       <title>数学物理方程笔记</title>
-      <link>http://localhost:1313/posts/mathematical-physics-method-note/</link>
+      <link>http://localhost:63214/posts/mathematical-physics-method-note/</link>
       <pubDate>Wed, 29 Jul 2026 11:41:45 +0800</pubDate>
-      <guid>http://localhost:1313/posts/mathematical-physics-method-note/</guid>
+      <guid>http://localhost:63214/posts/mathematical-physics-method-note/</guid>
       <description>&lt;h1 id=&#34;数学物理方程笔记&#34;&gt;数学物理方程笔记&lt;/h1&gt;
-&lt;p&gt;华中科技大学物理学院的胡勇老师上的课非常好，讲义也是自编的，尽管有在认真听课，但是最终考出来比较一般。但是我比较庆幸自己能够最终理解求解PDE的根本在于Sturm-Liouville理论的基函数展开这一个逻辑。在这里把我做的&lt;a href=&#34;http://localhost:1313/files/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B%E5%A4%8D%E4%B9%A0.pdf&#34;&gt;数学物理方程期末复习笔记&lt;/a&gt;放上来&lt;/p&gt;</description>
+&lt;p&gt;华中科技大学物理学院的胡勇老师上的课非常好，讲义也是自编的，尽管有在认真听课，但是最终考出来比较一般。但是我比较庆幸自己能够最终理解求解PDE的根本在于Sturm-Liouville理论的基函数展开这一个逻辑。在这里把我做的&lt;a href=&#34;http://localhost:63214/files/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B%E5%A4%8D%E4%B9%A0.pdf&#34;&gt;数学物理方程期末复习笔记&lt;/a&gt;放上来&lt;/p&gt;</description>
     </item>
     <item>
       <title>等离子体输运理论(1)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma1/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma1/</link>
       <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma1/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma1/</guid>
       <description>&lt;h1 id=&#34;hamilton力学从正则变换到赝正则变换&#34;&gt;Hamilton力学:从正则变换到赝正则变换&lt;/h1&gt;
 &lt;h2 id=&#34;hamilton正则方程与正则变换&#34;&gt;Hamilton正则方程与正则变换&lt;/h2&gt;
 &lt;p&gt;在经典Hamilton力学中，自由度为 $s$ 的系统需要规定 $2s$ 个变量，我们在理论力学课程中知道它们是广义坐标 $q_i\ (i=1,2,\dots,s)$ 和广义动量 $p_i\ (i=1,2,\dots,s)$。假设Hamilton函数 $H$ 不显含时间，这样的系统被称为自洽系统。系统的运动满足Hamilton正则方程：
@@ -254,9 +254,9 @@ $$\dot{q}_i=\frac{\partial H(q,p)}{\partial p_i},\quad \dot{p}_i=-\frac{\partial
     </item>
     <item>
       <title>等离子体输运理论(2)</title>
-      <link>http://localhost:1313/posts/transport-of-plasma2/</link>
+      <link>http://localhost:63214/posts/transport-of-plasma2/</link>
       <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/transport-of-plasma2/</guid>
+      <guid>http://localhost:63214/posts/transport-of-plasma2/</guid>
       <description>&lt;h2 id=&#34;局域坐标系&#34;&gt;局域坐标系&lt;/h2&gt;
 &lt;p&gt;这同样是非常基础但是重要的一节。区别于固定的笛卡尔坐标系引入了一种动态坐标系，从而更简便地描述电磁学的场线等。&lt;/p&gt;
 &lt;h3 id=&#34;frenet坐标系&#34;&gt;Frenet坐标系&lt;/h3&gt;
@@ -266,11 +266,11 @@ $$\dot{q}_i=\frac{\partial H(q,p)}{\partial p_i},\quad \dot{p}_i=-\frac{\partial
     </item>
     <item>
       <title>近代物理笔记</title>
-      <link>http://localhost:1313/posts/modern-physics-note/</link>
+      <link>http://localhost:63214/posts/modern-physics-note/</link>
       <pubDate>Tue, 28 Jul 2026 20:34:48 +0800</pubDate>
-      <guid>http://localhost:1313/posts/modern-physics-note/</guid>
+      <guid>http://localhost:63214/posts/modern-physics-note/</guid>
       <description>&lt;h1 id=&#34;近代物理笔记&#34;&gt;近代物理笔记&lt;/h1&gt;
-&lt;p&gt;华中科技大学物理学院李霖老师的近代物理课堂PPT整理得到的期末复习笔记。虽然老师讲得很好，但是我没怎么听过课，最后复习突击了一下也满绩了（虽然大概率只是跟期末考跟往年题重复率很高有关），在这里把笔记上传上来吧。&lt;a href=&#34;http://localhost:1313/files/%E8%BF%91%E4%BB%A3%E7%89%A9%E7%90%86%E5%A4%8D%E4%B9%A0.pdf&#34;&gt;近代物理笔记&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;华中科技大学物理学院李霖老师的近代物理课堂PPT整理得到的期末复习笔记。虽然老师讲得很好，但是我没怎么听过课，最后复习突击了一下也满绩了（虽然大概率只是跟期末考跟往年题重复率很高有关），在这里把笔记上传上来吧。&lt;a href=&#34;http://localhost:63214/files/%E8%BF%91%E4%BB%A3%E7%89%A9%E7%90%86%E5%A4%8D%E4%B9%A0.pdf&#34;&gt;近代物理笔记&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

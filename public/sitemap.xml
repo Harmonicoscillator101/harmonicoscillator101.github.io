@@ -2,118 +2,129 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:63214/categories/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:63214/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:63214/series/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>http://localhost:63214/tags/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/%E7%89%A9%E7%90%86/</loc>
+    <loc>http://localhost:63214/life/london-oxford-life2/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://localhost:63214/posts/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/</loc>
+    <loc>http://localhost:63214/categories/%E7%89%A9%E7%90%86/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma10/</loc>
+    <loc>http://localhost:63214/life/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/</loc>
+    <loc>http://localhost:63214/tags/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2026-08-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/life/london-oxford-life/</loc>
+    <loc>http://localhost:63214/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:63214/tags/%E7%AD%89%E7%A6%BB%E5%AD%90%E4%BD%93/</loc>
+    <lastmod>2026-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:63214/series/plasma-transport/</loc>
+    <lastmod>2026-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:63214/posts/transport-of-plasma10/</loc>
+    <lastmod>2026-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:63214/tags/%E8%BE%93%E8%BF%90%E7%90%86%E8%AE%BA/</loc>
+    <lastmod>2026-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:63214/life/london-oxford-life/</loc>
     <lastmod>2026-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/%E7%89%A9%E7%90%86%E5%AD%A6/</loc>
+    <loc>http://localhost:63214/categories/%E7%89%A9%E7%90%86%E5%AD%A6/</loc>
     <lastmod>2026-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/life/</loc>
+    <loc>http://localhost:63214/posts/quantum-computing-note/</loc>
     <lastmod>2026-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2026-08-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/quantum-computing-note/</loc>
-    <lastmod>2026-08-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma9/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma9/</loc>
     <lastmod>2026-08-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma8/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma8/</loc>
     <lastmod>2026-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma6/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma6/</loc>
     <lastmod>2026-08-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma7/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma7/</loc>
     <lastmod>2026-08-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/how-to-set-up-qiskit/</loc>
+    <loc>http://localhost:63214/posts/how-to-set-up-qiskit/</loc>
     <lastmod>2026-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://localhost:63214/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2026-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/</loc>
+    <loc>http://localhost:63214/tags/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/</loc>
     <lastmod>2026-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/</loc>
+    <loc>http://localhost:63214/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/</loc>
     <lastmod>2026-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma5/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma5/</loc>
     <lastmod>2026-08-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma4/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma4/</loc>
     <lastmod>2026-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma3/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma3/</loc>
     <lastmod>2026-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma0/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma0/</loc>
     <lastmod>2026-07-29T12:18:27+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/mathematical-physics-method-note/</loc>
+    <loc>http://localhost:63214/posts/mathematical-physics-method-note/</loc>
     <lastmod>2026-07-29T11:41:45+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/</loc>
+    <loc>http://localhost:63214/tags/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/</loc>
     <lastmod>2026-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma1/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma1/</loc>
     <lastmod>2026-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/transport-of-plasma2/</loc>
+    <loc>http://localhost:63214/posts/transport-of-plasma2/</loc>
     <lastmod>2026-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E6%BC%AB%E7%94%BB/</loc>
+    <loc>http://localhost:63214/tags/%E6%BC%AB%E7%94%BB/</loc>
     <lastmod>2026-07-28T22:55:07+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/life/my-life-post/</loc>
+    <loc>http://localhost:63214/life/my-life-post/</loc>
     <lastmod>2026-07-28T22:55:07+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/my-article-about-my-works/</loc>
+    <loc>http://localhost:63214/posts/my-article-about-my-works/</loc>
     <lastmod>2026-07-28T20:34:48+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/modern-physics-note/</loc>
+    <loc>http://localhost:63214/posts/modern-physics-note/</loc>
     <lastmod>2026-07-28T20:34:48+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/my-first-post/</loc>
+    <loc>http://localhost:63214/posts/my-first-post/</loc>
     <lastmod>2026-07-28T19:29:55+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:63214/about/</loc>
     <lastmod>2026-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>http://localhost:63214/search/</loc>
     <lastmod>2026-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>http://localhost:63214/archives/</loc>
     <lastmod>2026-07-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:63214/resources/</loc>
   </url>
 </urlset>

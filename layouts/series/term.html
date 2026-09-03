@@ -1,0 +1,24 @@
+{{- define `main` }}
+
+<header class='page-header'>
+  {{- partial `breadcrumbs.html` . }}
+  <h1>{{ .Title }}</h1>
+  <div class='post-description'>&#26412;&#31995;&#21015;&#20849; {{ len .RegularPages }} &#31687;&#65292;&#25353;&#31456;&#33410;&#39034;&#24207;&#25490;&#21015;&#12290;</div>
+</header>
+
+{{- $pages := sort .RegularPages `Params.series_order` `asc` }}
+<ol class='series-term-list'>
+  {{- range $pages }}
+  <li>
+    <a href='{{ .RelPermalink }}'>
+      <span class='series-term-number'>{{ printf `%02d` (int .Params.series_order) }}</span>
+      <span>{{ .Title }}</span>
+    </a>
+    {{- if not (.Param `hideMeta`) }}
+    <div class='series-term-meta'>{{ partial `post_meta.html` . }}</div>
+    {{- end }}
+  </li>
+  {{- end }}
+</ol>
+
+{{- end }}

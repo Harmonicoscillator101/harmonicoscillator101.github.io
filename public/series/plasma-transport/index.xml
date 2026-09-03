@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>等离子体输运理论 on Harmonicoscillator的个人网站</title>
+    <link>http://localhost:63214/series/plasma-transport/</link>
+    <description>Recent content in 等离子体输运理论 on Harmonicoscillator的个人网站</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 27 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:63214/series/plasma-transport/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>等离子体输运理论(10)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma10/</link>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma10/</guid>
+      <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
+&lt;h2 id=&#34;矩的分类&#34;&gt;矩的分类&lt;/h2&gt;
+&lt;h3 id=&#34;双流体的分类方式&#34;&gt;双流体的分类方式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;等离体动力学矩&lt;/strong&gt;：包含 $n_a$、$\boldsymbol{u}^a$、$T_a$，为参考局域平衡分布 $f^{a0}$ 的矩，它们的信息完全确定了参考态。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;非等离体动力学矩&lt;/strong&gt;：分布函数全部 Hermite 矩 $h^{a(m)}_{\cdots}(\boldsymbol{x},t)$ 的集合，在处于参考局域平衡态的时候，它们的值恒为零，因此它们确定了真实态对参考态的偏差。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;单流体的分类方式&#34;&gt;单流体的分类方式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;标量矩&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\begin{pmatrix} n_e \\ n_i \end{pmatrix}
+\Rightarrow
+\begin{pmatrix} \rho = \sum_a m_a n_a \\ \sigma = \sum_a e_a n_a \end{pmatrix}
+$$&lt;p&gt;&lt;strong&gt;矢量矩&lt;/strong&gt;：
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(9)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma9/</link>
+      <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma9/</guid>
+      <description>&lt;h1 id=&#34;hermite-矩估计&#34;&gt;Hermite 矩估计&lt;/h1&gt;
+&lt;h2 id=&#34;准中性近似&#34;&gt;准中性近似&lt;/h2&gt;
+&lt;h3 id=&#34;特征时间尺度&#34;&gt;特征时间尺度&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;动理方程&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\partial_t f^a = \Phi^a + \mathscr{F}^a + \mathscr{K}^a
+$$&lt;p&gt;
+上一章已经充分论述严格求解之不可能，因此要采取近似。&lt;/p&gt;
+&lt;p&gt;回忆第二章讨论的特征时间尺度，有：
+&lt;/p&gt;
+$$
+\frac{1}{\tau_H^a} \sim \frac{V_{Ta}}{L_H}
+$$&lt;p&gt;
+$\tau_H^a$ 为流体力学特征时间，$L_H$ 为特征长度，且对于任意的流体力学量与电磁学量，有
+&lt;/p&gt;
+$$
+\frac{1}{L_H} \approx \mathrm{max} \left| \frac{\nabla A(x)}{A(x)} \right|
+$$&lt;p&gt;
+梯度由仪器设备决定，一般很大，所以特征长度要小得多，则流体力学时间会很长。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(8)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma8/</link>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma8/</guid>
+      <description>&lt;h1 id=&#34;等离体宏观量的级列结构&#34;&gt;等离体宏观量的级列结构&lt;/h1&gt;
+&lt;h2 id=&#34;不同阶矩&#34;&gt;不同阶矩&lt;/h2&gt;
+&lt;h3 id=&#34;零阶矩&#34;&gt;零阶矩&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;粒子数密度，双流体变量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+n_a(\boldsymbol{x},t) = \int f^a(\boldsymbol{v};\boldsymbol{x},t) \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;密度，单流体变量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\rho(\boldsymbol{x},t) = \sum_a m_a \int f^a \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;电荷密度，电动力学量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\sigma(\boldsymbol{x},t) = \sum_a e_a \int f^a \, d\boldsymbol{v}
+$$&lt;p&gt;在这里面，分布函数应当理解为：
+&lt;/p&gt;
+$$
+f^a(\boldsymbol{v};\boldsymbol{x},t) = \int \delta(\boldsymbol{q} - \boldsymbol{x}) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q}
+$$&lt;h3 id=&#34;一阶矩&#34;&gt;一阶矩&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;平均速度，双流体变量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+n_a u_r^a(\boldsymbol{x},t) = \int v_r f^a \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;质心速度，单流体量&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\rho u_r(\boldsymbol{x},t) = \sum_a m_a \int v_r f^a \, d\boldsymbol{v}
+$$&lt;p&gt;&lt;strong&gt;电动力学量&lt;/strong&gt;：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(6)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma6/</link>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma6/</guid>
+      <description>&lt;h1 id=&#34;等离体动理方程&#34;&gt;等离体动理方程&lt;/h1&gt;
+&lt;h2 id=&#34;landau-方程&#34;&gt;Landau 方程&lt;/h2&gt;
+&lt;h3 id=&#34;传播函数&#34;&gt;传播函数&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;目标：从单粒子方程中消去关联函数 $g^{\alpha\beta}$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从弱耦合形式的关联方程出发，这是一个关于 $g^{\alpha\beta}$ 的线性非齐次方程。&lt;/p&gt;
+&lt;p&gt;传播函数方程：定义传播函数 $U_{12}^{\alpha\beta}(t)$，满足：
+&lt;/p&gt;
+$$
+\partial_t U_{12}^{\alpha\beta}(t) - (L_1^\alpha + L_2^\beta)U_{12}^{\alpha\beta}(t) = 0, \quad U_{12}^{\alpha\beta}(0) = I
+$$&lt;p&gt;关联函数的形式解：通过传播函数，运用常数变易法，线性非齐次的 Landau 方程的初值问题解为：
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(7)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma7/</link>
+      <pubDate>Sat, 08 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma7/</guid>
+      <description>&lt;h1 id=&#34;等离体的宏观描述与矩的导出&#34;&gt;等离体的宏观描述与矩的导出&lt;/h1&gt;
+&lt;h2 id=&#34;局域分布函数&#34;&gt;局域分布函数&lt;/h2&gt;
+&lt;h3 id=&#34;输运理论概念&#34;&gt;输运理论概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;空间平移不变性&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+f^a(\boldsymbol{q},\boldsymbol{v};t) = n_a \varphi^a(\boldsymbol{v};t)
+$$&lt;p&gt;
+$n_a$ 表示离子数密度，$\varphi^a$ 为速度分布，满足归一化条件：
+&lt;/p&gt;
+$$
+\int \varphi^a(\boldsymbol{v};t) \, d\boldsymbol{v} = 1
+$$&lt;p&gt;&lt;strong&gt;宏观动力学函数&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+B^a(\boldsymbol{x};t) = \int b^a(\boldsymbol{q},\boldsymbol{v};t) f^a(\boldsymbol{q},\boldsymbol{v};t) \, d\boldsymbol{q} \, d\boldsymbol{v}
+$$&lt;p&gt;
+$b^a(\boldsymbol{q},\boldsymbol{v};t)$ 表示相空间中的任意函数。注意，$\boldsymbol{x}$ 不是相空间坐标而是物理空间坐标。&lt;/p&gt;
+&lt;p&gt;宏观动力学函数建立起了微观物理与宏观物理之间的关系。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(5)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma5/</link>
+      <pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma5/</guid>
+      <description>&lt;h1 id=&#34;等离体动理方程&#34;&gt;等离体动理方程&lt;/h1&gt;
+&lt;h2 id=&#34;相互作用带电粒子系统&#34;&gt;相互作用带电粒子系统&lt;/h2&gt;
+&lt;h3 id=&#34;含相互作用势的-hamilton-量&#34;&gt;含相互作用势的 Hamilton 量&lt;/h3&gt;
+&lt;p&gt;最为简单的方法是为 Hamilton 函数添加相互作用势，如下所示：&lt;/p&gt;
+&lt;p&gt;含相互作用势的 Hamilton 函数：&lt;/p&gt;
+&lt;p&gt;\begin{aligned}
+H(q,v) &amp;amp;= \sum_{j=1}^N \left[ \frac{1}{2} m_{a_j} v_j^2 + e_{a_j} \Phi_0(q_j) \right] + \sum_{n=1}^N \sum_{j=1}^{j&amp;lt;n} V_{j,n}(q_j,q_n)= \sum_{j=1}^N H_{0_j}^a + \sum_{n=1}^N \sum_{j=1}^{j&amp;lt;n} V_{j,n}
+\end{aligned}&lt;/p&gt;
+&lt;p&gt;带电粒子系统中两个粒子首先满足库仑定律，因此势函数可以写为：
+&lt;/p&gt;
+$$
+V_{j,n}(q_j,q_n) = e_{a_j} e_{a_n} \frac{1}{|\boldsymbol{q} - \boldsymbol{q}_n|}
+$$&lt;p&gt;
+因此势函数仅仅依赖于粒子之间的距离。&lt;/p&gt;
+&lt;h3 id=&#34;全电离非相对论等离体模型&#34;&gt;全电离非相对论等离体模型&lt;/h3&gt;
+&lt;p&gt;以上的式子满足两个近似：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;粒子系统是全电离的，排除了中性粒子，以及电荷交换等其他的相互作用，总之粒子系统是相当理想的。&lt;/li&gt;
+&lt;li&gt;粒子系统必须符合非相对论近似，换言之它们的相对速度没有达到光速量级以至于相对论效应可以忽略。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;太多复杂的细枝末节先不考虑，这样构成了全电离非相对论等离体模型。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(4)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma4/</link>
+      <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma4/</guid>
+      <description>&lt;h1 id=&#34;等离体分布函数的导出与微观机制&#34;&gt;等离体分布函数的导出与微观机制&lt;/h1&gt;
+&lt;h2 id=&#34;相空间分布函数&#34;&gt;相空间分布函数&lt;/h2&gt;
+&lt;h3 id=&#34;相空间分布函数-1&#34;&gt;相空间分布函数&lt;/h3&gt;
+&lt;p&gt;相空间分布函数 $F(q,p;t)$ 满足归一化条件：
+&lt;/p&gt;
+$$
+\int F(q,p;t)d^{3N}qd^{3N}p = 1
+$$&lt;p&gt;
+可以将 $F$ 看作 $t$ 时刻 $(q,p)$ 的概率密度。&lt;/p&gt;
+&lt;p&gt;相空间的概率密度自然满足 Liouville 定理：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Liouville 定理&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\frac{dF}{dt} = \frac{\partial F}{\partial t} + \{F, H\} = 0
+$$&lt;p&gt;
+记 $L$ 为 Liouville 算符：
+&lt;/p&gt;
+$$
+\frac{\partial F}{\partial t} = \{H, F\} = LF, \qquad L = -\sum_j \left( \dot{\boldsymbol{q}}_j \frac{\partial}{\partial q_j} + \dot{\boldsymbol{p}}_j \frac{\partial}{\partial p_j} \right)
+$$&lt;h3 id=&#34;约化分布函数&#34;&gt;约化分布函数&lt;/h3&gt;
+&lt;p&gt;将分布函数简化为约化分布函数以考虑最重要的关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;约化分布函数 $\hat{f_s^a}(q_1,\dots,q_s,p_1,\dots,p_s;t)$&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;对于单粒子（$a$ 表示粒子种类，$N_a$ 为该种粒子的数量）：
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(3)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma3/</link>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma3/</guid>
+      <description>&lt;h1 id=&#34;带电粒子在电磁场中的运动及如何将其纳入hamilton力学体系&#34;&gt;带电粒子在电磁场中的运动及如何将其纳入Hamilton力学体系&lt;/h1&gt;
+&lt;h2 id=&#34;均匀场下的漂移&#34;&gt;均匀场下的漂移&lt;/h2&gt;
+&lt;h3 id=&#34;回旋磁矩&#34;&gt;回旋磁矩&lt;/h3&gt;
+&lt;p&gt;对于垂直于磁场 $B$ 的一个载流线圈中，可以定义沿着轨道的平均电流为：
+&lt;/p&gt;
+$$
+    I=\frac{e \Omega}{2 \pi} \tag{1}
+$$&lt;p&gt;
+根据电磁学知识，磁矩可以由电流回路表示：
+&lt;/p&gt;
+$$
+    \mu = IS =\frac{e \Omega \rho_L^2}{2} \tag{2}
+$$&lt;p&gt;
+而回旋半径为 $\rho _L=v_{\perp}/\Omega$，且 $\Omega=eB/m$，
+因此回旋磁矩：
+&lt;/p&gt;
+$$
+    \mu=\frac{mv_{\perp}^2}{2B} \tag{3}
+$$&lt;p&gt;
+由叉乘关系，磁矩矢量 $\boldsymbol{\mu}$ 与 $\boldsymbol{B}$ 相反，因此 Larmor 回旋是抗磁的。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(0)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma0/</link>
+      <pubDate>Wed, 29 Jul 2026 12:18:27 +0800</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma0/</guid>
+      <description>&lt;h1 id=&#34;等离子体输运理论0&#34;&gt;等离子体输运理论(0)&lt;/h1&gt;
+&lt;h2 id=&#34;写在开始之前&#34;&gt;写在开始之前&lt;/h2&gt;
+&lt;p&gt;花了一个晚上终于建好了自己的个人网站，我总想着要不写点什么吧！以防这个网站放在这里空荡荡的，但是思考了很久，除了上传了两篇笔记之外也没有再干什么。最后还是决定，把一直在学习和工作的和等离子体输运理论有关的东西发布出来，同时借此反向督促自己回顾过去的东西。我知道没什么人会访问这个网站，也许这样做只是为了杀时间罢了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(1)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma1/</link>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma1/</guid>
+      <description>&lt;h1 id=&#34;hamilton力学从正则变换到赝正则变换&#34;&gt;Hamilton力学:从正则变换到赝正则变换&lt;/h1&gt;
+&lt;h2 id=&#34;hamilton正则方程与正则变换&#34;&gt;Hamilton正则方程与正则变换&lt;/h2&gt;
+&lt;p&gt;在经典Hamilton力学中，自由度为 $s$ 的系统需要规定 $2s$ 个变量，我们在理论力学课程中知道它们是广义坐标 $q_i\ (i=1,2,\dots,s)$ 和广义动量 $p_i\ (i=1,2,\dots,s)$。假设Hamilton函数 $H$ 不显含时间，这样的系统被称为自洽系统。系统的运动满足Hamilton正则方程：
+&lt;/p&gt;
+$$\dot{q}_i=\frac{\partial H(q,p)}{\partial p_i},\quad \dot{p}_i=-\frac{\partial H(q,p)}{\partial q_i}\tag{1}$$&lt;p&gt;
+这样，$q$ 与 $p$ 成为了动力学系统的固定相空间的变量。实际上，上式也可以改写为矩阵的形式。设坐标与动量组成的向量 $\vec{\eta}=(q,p)^T$，那么正则方程：
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>等离子体输运理论(2)</title>
+      <link>http://localhost:63214/posts/transport-of-plasma2/</link>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:63214/posts/transport-of-plasma2/</guid>
+      <description>&lt;h2 id=&#34;局域坐标系&#34;&gt;局域坐标系&lt;/h2&gt;
+&lt;p&gt;这同样是非常基础但是重要的一节。区别于固定的笛卡尔坐标系引入了一种动态坐标系，从而更简便地描述电磁学的场线等。&lt;/p&gt;
+&lt;h3 id=&#34;frenet坐标系&#34;&gt;Frenet坐标系&lt;/h3&gt;
+&lt;p&gt;对于三维空间的任意一条光滑的曲线，取其上任意一点，可以构造三个相互垂直的单位向量：&lt;/p&gt;
+&lt;p&gt;1.切向量 $\boldsymbol{b}(\boldsymbol{r})$。其方向指向曲线在该点的前进方向,可以由原点到该点的位置矢量 $\boldsymbol{r}(s)$ 对自然参量 $s$（也就是弧长）的一阶导数来表示：
+&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
