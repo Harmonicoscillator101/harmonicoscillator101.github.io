@@ -15,6 +15,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  # 固定 Hugo 版本，避免上游发布破坏性更新时构建突然失败
+  HUGO_VERSION: 0.164.0
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,13 +27,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-depth: 0
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
-      - name: Debug - List files
-        run: ls -la
+      - name: Show Hugo version
+        run: hugo version
       - name: Build
         run: hugo --minify
       - name: Upload artifact

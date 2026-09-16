@@ -1,0 +1,16 @@
+{{- /*
+  定理盒子。
+
+  行内（标题可选）：{{< theorem >}} 内容 {{< /theorem >}}
+  带标题：          {{< theorem "洛伦兹力下的漂移" >}} 内容 {{< /theorem >}}
+  关闭编号：        {{< theorem number="false" >}} 内容 {{< /theorem >}}
+*/ -}}
+{{- partial "box.html" (dict
+  "kind" "theorem"
+  "en" "Theorem"
+  "num" "定理"
+  "title" (.Get 0)
+  "number" (.Get "number")
+  "inner" .Inner
+  "page" .Page
+) -}}

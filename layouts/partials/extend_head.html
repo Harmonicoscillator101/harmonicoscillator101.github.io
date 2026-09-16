@@ -1,4 +1,12 @@
 <link rel="stylesheet" href="/css/custom.css">
-{{ if or .Params.math .Site.Params.math }}
-{{ partial "mathjax.html" . }}
-{{ end }}
+{{- /* 公式引擎：hugo.toml 里的 params.mathEngine 可设为 katex（默认）或 mathjax */ -}}
+{{- if .Params.math | default .Site.Params.math -}}
+{{- $engine := .Param "mathEngine" -}}
+{{- if not $engine }}{{ $engine = site.Params.mathEngine }}{{ end -}}
+{{- if not $engine }}{{ $engine = "katex" }}{{ end -}}
+{{- if eq $engine "mathjax" -}}
+{{- partial "mathjax.html" . }}
+{{- else -}}
+{{- partial "katex.html" . }}
+{{- end -}}
+{{- end -}}

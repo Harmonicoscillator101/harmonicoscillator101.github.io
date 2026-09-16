@@ -1,0 +1,10 @@
+{{- /* 推论盒子。用法同 {{< theorem >}} */ -}}
+{{- partial "box.html" (dict
+  "kind" "corollary"
+  "en" "Corollary"
+  "num" "推论"
+  "title" (.Get 0)
+  "number" (.Get "number")
+  "inner" .Inner
+  "page" .Page
+) -}}

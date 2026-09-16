@@ -1,0 +1,12 @@
+{{- /* 证明盒子，默认不编号，末尾自动带证毕符号。
+  用法：{{< proof >}} 推导过程 {{< /proof >}}
+        {{< proof "另一种思路" >}} ... {{< /proof >}} */ -}}
+{{- partial "box.html" (dict
+  "kind" "proof"
+  "en" "Proof"
+  "num" "证明"
+  "title" (.Get 0)
+  "number" (.Get "number")
+  "inner" .Inner
+  "page" .Page
+) -}}

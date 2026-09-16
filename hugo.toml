@@ -10,6 +10,9 @@ summaryLength = 140
 
 [params]
   math = true
+  # 公式渲染引擎：katex（默认，更快）或 mathjax
+  mathEngine = "katex"
+  description = "Harmonicoscillator 的个人网站：数学物理学习笔记、等离子体输运理论、量子计算笔记与生活随笔。"
   ShowCodeCopyButtons = true
   ShowReadingTime = true
   ShowBreadCrumbs = true
@@ -43,8 +46,15 @@ summaryLength = 140
     iconHeight = 35
 
 [params.assets]
-  custom_css = ["css/custom.css"]
-  favicon = "/images/mostima1.jpg" 
+  # 自定义样式由 layouts/partials/extend_head.html 注入，这里不再重复声明
+  # 主图标用 mostima1.jpg；下面三个是浏览器/Touch Icon 会单独请求的尺寸，
+  # 已从 mostima1.jpg 居中裁成正方形再缩放（原图 458x478，直接缩放会变形）
+  favicon = "/images/mostima1.jpg"
+  favicon16x16 = "/images/favicon-16x16.png"
+  favicon32x32 = "/images/favicon-32x32.png"
+  apple_touch_icon = "/images/apple-touch-icon.png"
+  # Safari 固定标签页用单色剪影图标（不设的话会去请求根目录导致 404）
+  safari_pinned_tab = "/images/safari-pinned-tab.svg"
 
 [params.fuseOpts]
   isCaseSensitive = false

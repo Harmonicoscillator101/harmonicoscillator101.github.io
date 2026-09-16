@@ -1,0 +1,151 @@
+{{- /*
+  公式渲染：KaTeX + 自动渲染 + 公式交叉引用
+  ---------------------------------------------------------------------------
+  相比 MathJax：体积小得多，且没有首屏公式重排造成的闪动。
+
+  作者用法（写在 Markdown 里）：
+    行内公式   $E=mc^2$
+    行间公式   $$\n ... \n$$
+    公式编号   \tag{15}
+    公式标签   \label{eq:drift}      （写在 \tag 同一行即可）
+    引用公式   $\ref{eq:drift}$ 或 $\eqref{eq:drift}$  ->  渲染成可点击的 (15)
+               （\ref / \eqref 必须写在 $...$ 里，这是宏而不是普通文本）
+
+  实现要点：
+  - KaTeX 核心没有 \label / \ref，这里用 \htmlData 宏把标签名写进 DOM，
+    等页面渲染完成后由 JS 收集「标签 -> 编号」，再把引用替换成跳转链接。
+  - \htmlData 属于 html 扩展，必须 trust: true 且 strict: false 才会输出。
+  - 引用可能出现在公式之前，所以统一在全部渲染完成后解析。
+*/ -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
+  integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
+  integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+
+<script id="khs-katex-config">
+  window.khsKatexOptions = function () {
+    return {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\[', right: '\\]', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+      ignoredClasses: ['tex2jax_ignore', 'post-toc', 'header'],
+      throwOnError: false,
+      errorColor: '#d9534f',
+      // 必须为 false：strict 模式会禁用 html 扩展，\htmlData 将不再输出，
+      // 公式交叉引用就失效了
+      strict: false,
+      trust: true,
+      maxExpand: 100000,
+      macros: {
+        // \label / \ref / \eqref 交给下面的标签机制处理
+        '\\label': '\\htmlEqLabel{#1}',
+        '\\htmlEqLabel': '\\htmlData{eqlabel=#1}{}',
+        '\\ref': '\\htmlData{eqref=#1}{\\text{??}}',
+        '\\eqref': '\\htmlData{eqref=#1}{\\text{??}}'
+      },
+      errorCallback: function (msg, err) {
+        if (window.console) {
+          console.warn('[katex] ' + msg + (err && err.message ? ' :: ' + err.message : ''));
+        }
+      }
+    };
+  };
+
+  // 标记渲染失败的公式，悬停可看到原始写法，方便发现笔误
+  window.khsKatexHandleErrors = function (root) {
+    (root || document).querySelectorAll('.katex-error').forEach(function (el) {
+      if (!el.title) {
+        el.title = '公式渲染失败：' + (el.textContent || '').slice(0, 160);
+      }
+    });
+  };
+
+  // 收集「标签 -> 编号」映射，并把引用替换成可跳转的链接
+  window.khsKatexResolveRefs = function () {
+    var labels = {};
+    var seen = {};
+
+    document.querySelectorAll('[data-eqlabel]').forEach(function (el) {
+      var key = el.getAttribute('data-eqlabel');
+      if (!key) return;
+      var display = el.closest('.katex-display');
+      if (!display) return;
+      var tagEl = display.querySelector('.tag');
+      var num = tagEl ? tagEl.textContent.replace(/\s+/g, '') : '?';
+      if (!num) num = '?';
+      // 同一标签重复出现时加后缀，避免 id 冲突
+      var id = key;
+      if (seen[key]) id = key + '-' + seen[key];
+      seen[key] = (seen[key] || 0) + 1;
+      if (!display.id) display.id = id;
+      labels[key] = { number: num, id: display.id };
+    });
+
+    var unresolved = 0;
+    document.querySelectorAll('[data-eqref]').forEach(function (el) {
+      var key = el.getAttribute('data-eqref');
+      var hit = labels[key];
+      var a = document.createElement('a');
+      a.className = 'katex-ref';
+      if (hit) {
+        a.textContent = hit.number;
+        a.href = '#' + hit.id;
+        a.title = '跳转到公式 ' + hit.number;
+      } else {
+        unresolved++;
+        a.textContent = '??';
+        a.title = '找不到公式标签 ' + key + '（请在该公式的 \\tag 后面补上 \\label{' + key + '}）';
+      }
+      el.replaceWith(a);
+    });
+
+    if (unresolved && window.console) {
+      console.warn('[katex] 有 ' + unresolved + ' 个 \\ref 找不到对应标签');
+    }
+  };
+
+  // 通过锚点跳转到公式时高亮目标
+  window.khsKatexHighlightHash = function () {
+    var hash = decodeURIComponent(window.location.hash || '');
+    if (!hash || hash.length < 2) return;
+    var target = document.getElementById(hash.slice(1));
+    if (!target || !target.classList.contains('katex-display')) return;
+    target.classList.remove('eq-target');
+    void target.offsetWidth; // 强制重排以重启动画
+    target.classList.add('eq-target');
+  };
+</script>
+
+<script>
+  (function () {
+    // defer 脚本按顺序执行，因此这里 KaTeX 已经就绪
+    function render() {
+      if (!window.renderMathInElement || !window.khsKatexOptions) return false;
+      window.renderMathInElement(document.body, window.khsKatexOptions());
+      window.khsKatexHandleErrors(document);
+      window.khsKatexResolveRefs();
+      window.khsKatexHighlightHash();
+      window.addEventListener('hashchange', window.khsKatexHighlightHash);
+      return true;
+    }
+
+    // 极端情况下（CDN 慢/失败）兜底轮询，避免公式留在源码状态
+    function boot(attempt) {
+      if (render()) return;
+      if (attempt > 100) return;
+      setTimeout(function () { boot(attempt + 1); }, 50);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { boot(0); });
+    } else {
+      boot(0);
+    }
+  })();
+</script>

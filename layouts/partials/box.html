@@ -1,0 +1,32 @@
+{{- /*
+  定理类环境盒子的公共模板。
+
+  参数：
+    kind   必填，盒子类型：theorem / lemma / corollary / proposition /
+           definition / example / remark / proof / note
+    en     英文名，用于 aria-label
+    num    中文名
+    title  可选，盒子标题（例如 "均值定理"）
+    number 可选，传 "false" 关闭自动编号
+
+  用法见 layouts/shortcodes/*.html
+*/ -}}
+{{- $kind := .kind -}}
+{{- $name := .num -}}
+{{- $number := "" -}}
+{{- $numbered := ne (printf "%v" (.number | default "true")) "false" -}}
+{{- if and $numbered (ne $kind "proof") -}}
+  {{- $key := printf "box-counter-%s" $kind -}}
+  {{- $next := add (int (.page.Store.Get $key | default 0)) 1 -}}
+  {{- .page.Store.Set $key $next -}}
+  {{- $number = printf "%d" $next -}}
+{{- end -}}
+<div class='box box-{{ $kind }}' role='note' aria-label='{{ .en }}'>
+  <div class='box-head'>
+    <span class='box-name'>{{ $name }}{{ with $number }}&nbsp;{{ . }}{{ end }}</span>
+    {{- with .title }}<span class='box-title'>{{ . }}</span>{{ end -}}
+  </div>
+  <div class='box-body'>
+    {{- .inner | markdownify -}}
+  </div>
+</div>

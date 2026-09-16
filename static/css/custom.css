@@ -1,93 +1,241 @@
-/* 全局背景图片 */
+/* ==========================================================================
+   全局背景
+   --------------------------------------------------------------------------
+   注意：这些声明必须带 !important。
+   PaperMod 给列表页的 <body> 加了 class="list"，
+   而 .list { background: var(--theme) } 是 shorthand，会把 background-image
+   重置为 none 且铺上不透明底色；它的特异性(0,1,0) 高于 body(0,0,1)，
+   不加 !important 的话背景图在首页、时间轴等页面会被直接判为 none。
+   ========================================================================== */
 body {
     background-image: url('/images/bg.jpg') !important;
     background-size: cover !important;
-    background-attachment: fixed !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
 }
-/* 主内容区添加半透明白色背景，保证文字清晰可读 */
+
+/* 浏览器不支持 fixed 背景时（移动端 Safari 等）退回滚动背景，
+   否则背景会被裁切、错位。
+   注意同样需要 !important，否则压不住上面基础规则里的 !important。 */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll !important;
+    }
+}
+
+/* ==========================================================================
+   主内容区：半透明卡片
+   ========================================================================== */
 .main {
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 2rem;
     margin: 1rem auto;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* 可选：让导航栏也稍微透明，与背景融合 */
 .header {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--header-bg);
     backdrop-filter: blur(8px);
-}
-/* ========== 深色模式修复 ========== */
-/* 针对 PaperMod 的暗色类 .dark （手动切换或系统自动） */
-.dark {
-  /* 关键：将卡片背景强制设为深色半透明，文字浅色 */
-  --card-bg: rgba(30, 30, 30, 0.85);
-  --text-color: #e0e0e0;
-  --link-color: #8ab4f8;
-  --header-bg: rgba(20, 20, 20, 0.85);
+    -webkit-backdrop-filter: blur(8px);
 }
 
-/* 将这些变量应用到主要区域 */
-.dark .main,
-.dark .post-entry,
-.dark .post-content,
-.dark article,
-.dark .page-header,
-.dark .archive-entry {
-  background-color: var(--card-bg) !important;
-  color: var(--text-color) !important;
+/* ==========================================================================
+   暗色模式
+   --------------------------------------------------------------------------
+   PaperMod 使用 <html data-theme="dark">，不是 .dark 类，
+   旧版本里用 .dark 写的规则全部不会生效，这里统一改成 [data-theme="dark"]。
+   ========================================================================== */
+:root {
+    --card-bg: rgba(255, 255, 255, 0.78);
+    --card-border: rgba(0, 0, 0, 0.05);
+    --header-bg: rgba(255, 255, 255, 0.82);
+    --overlay: transparent;
 }
 
-.dark .header,
-.dark .nav {
-  background-color: var(--header-bg) !important;
+:root[data-theme="dark"] {
+    --card-bg: rgba(28, 29, 33, 0.85);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(20, 21, 24, 0.85);
+    --overlay: rgba(0, 0, 0, 0.5);
 }
 
-.dark a {
-  color: var(--link-color) !important;
+/* 压暗全局背景图：伪元素挂在 <html> 上才不会被 body 的背景图遮住 */
+:root[data-theme="dark"]::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* 让背景图片在深色模式下叠加一层半透明黑色遮罩 */
-.dark body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* 0.4 使背景变暗但不完全遮蔽 */
-  z-index: -1;
-  pointer-events: none; /* 让遮罩不阻挡点击 */
+/* 让卡片内所有基于主题变量的元素保持一致的暗色观感 */
+:root[data-theme="dark"] .main,
+:root[data-theme="dark"] .post-entry,
+:root[data-theme="dark"] .post-content,
+:root[data-theme="dark"] .page-header,
+:root[data-theme="dark"] .archive-entry {
+    background-color: var(--card-bg);
 }
 
-/* 如果 PaperMod 使用 data-theme 属性而不是 .dark，添加这个备用 */
-[data-theme="dark"] .main,
-[data-theme="dark"] .post-entry,
-[data-theme="dark"] .post-content,
-[data-theme="dark"] article {
-  background-color: rgba(30, 30, 30, 0.85) !important;
-  color: #e0e0e0 !important;
+/* ==========================================================================
+   数学公式
+   ========================================================================== */
+/* 行内公式随中文行高对齐，避免行距被撑开 */
+.katex {
+    font-size: 1.05em;
 }
 
-[data-theme="dark"] .header {
-  background-color: rgba(20, 20, 20, 0.85) !important;
+/* 行间公式：允许长公式横向滚动而不是撑破卡片 */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.35rem 0;
 }
 
-[data-theme="dark"] a {
-  color: #8ab4f8 !important;
+.katex-display > .katex {
+    white-space: normal;
 }
 
-[data-theme="dark"] body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: -1;
-  pointer-events: none;
+/* 渲染失败的公式：显式提示，便于作者发现 */
+.katex-error {
+    border-bottom: 1px dashed #d9534f;
+    color: #d9534f !important;
+    cursor: help;
+}
+
+/* 公式交叉引用：\ref{eq:xxx} 渲染出的可点击编号 */
+.katex-ref {
+    color: var(--primary);
+    border-bottom: 1px dotted currentColor;
+    text-decoration: none;
+}
+
+.katex-ref:hover {
+    border-bottom-style: solid;
+    color: var(--box-accent, #4c6ef5);
+}
+
+/* 被引用公式的高亮闪烁 */
+@keyframes eq-flash {
+    0%,
+    100% {
+        background-color: transparent;
+    }
+    20%,
+    60% {
+        background-color: rgba(255, 196, 0, 0.25);
+    }
+}
+
+.katex-display.eq-target {
+    animation: eq-flash 1.6s ease-in-out;
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+   定理 / 定义 / 证明 等环境盒子（layouts/shortcodes/*.html）
+   ========================================================================== */
+.box {
+    margin: 1.5rem 0;
+    padding: 0.9rem 1.1rem 0.9rem 1.15rem;
+    border-left: 3px solid var(--box-color, var(--border));
+    border-radius: 6px;
+    /* 不支持 color-mix 的浏览器退回主题卡片底色 */
+    background-color: var(--entry);
+    background-color: color-mix(in srgb, var(--box-color, var(--border)) 7%, var(--entry));
+}
+
+.box-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.box-title {
+    font-weight: 700;
+    color: var(--box-color, var(--primary));
+}
+
+.box-head .box-name {
+    font-weight: 700;
+    color: var(--box-color, var(--primary));
+}
+
+.box-head .box-title {
+    font-weight: 400;
+    color: var(--secondary);
+}
+
+/* 盒子正文里的首尾段落去掉多余外边距 */
+.box > p:first-of-type,
+.box > .box-body > p:first-child {
+    margin-top: 0;
+}
+
+.box > p:last-child,
+.box > .box-body > p:last-child {
+    margin-bottom: 0;
+}
+
+/* 嵌套盒子时不做二次着色，只保留左线 */
+.box .box {
+    background-color: transparent;
+    padding-left: 0.9rem;
+}
+
+/* 定理类：偏冷色 */
+.box-theorem,
+.box-lemma,
+.box-corollary,
+.box-proposition {
+    --box-color: #4c6ef5;
+}
+
+/* 定义类：偏绿色 */
+.box-definition {
+    --box-color: #2f9e44;
+}
+
+/* 例题 / 注记 */
+.box-example {
+    --box-color: #f08c00;
+}
+
+.box-remark,
+.box-note {
+    --box-color: #868e96;
+}
+
+/* 证明类：灰蓝，末尾加证毕符号 */
+.box-proof {
+    --box-color: #5c7cfa;
+}
+
+.box-proof .box-body::after {
+    content: "∎";
+    float: right;
+    color: var(--secondary);
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .box {
+        padding: 0.8rem 0.9rem 0.8rem 1rem;
+    }
+
+    :root {
+        --card-bg: rgba(255, 255, 255, 0.88);
+    }
 }
