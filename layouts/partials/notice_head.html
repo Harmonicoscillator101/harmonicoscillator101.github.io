@@ -1,0 +1,46 @@
+{{- /*
+  公告栏"关闭状态"的引导脚本。
+
+  行为：点 × 只隐藏「当前这一次会话」，刷新页面即重新出现。
+  因此用 sessionStorage 而不是 localStorage：
+    - sessionStorage 的作用域是标签页会话，刷新不清除、新开标签页/重开浏览器即失效；
+    - 为了让"刷新就回来"成立，这里在页面卸载时主动清掉该键，
+      于是刷新得到的是全新会话 → 公告重新出现。
+
+  必须放在 <head> 里、在页面开始渲染前执行：
+  已关闭时立刻在 <html> 上打标记，由 custom.css 的
+  [data-notice-closed] 规则隐藏卡片，避免出现"先闪一下再消失"。
+*/ -}}
+{{- $cfg := site.Data.notice -}}
+{{- if and $cfg $cfg.enable ($cfg.dismissible | default true) -}}
+<script>
+  (function () {
+    var KEY = 'notice-closed';
+    var html = document.documentElement;
+    try {
+      // 清掉旧版本用过的 localStorage 键，否则早已关闭过的浏览器会一直看不到公告
+      localStorage.removeItem(KEY);
+      if (sessionStorage.getItem(KEY) === '1') {
+        html.setAttribute('data-notice-closed', '');
+      }
+    } catch (e) { /* 隐私模式等场景忽略 */ }
+
+    // 刷新/离开页面即视为本次会话结束，清掉标记
+    window.addEventListener('pagehide', function () {
+      try { sessionStorage.removeItem(KEY); } catch (e) {}
+    });
+    window.addEventListener('beforeunload', function () {
+      try { sessionStorage.removeItem(KEY); } catch (e) {}
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('notice-hide');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+        html.setAttribute('data-notice-closed', '');
+      });
+    });
+  })();
+</script>
+{{- end -}}

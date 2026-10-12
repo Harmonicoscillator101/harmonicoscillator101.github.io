@@ -1,0 +1,82 @@
+{{- /*
+  首页公告栏卡片：手写公告（data/notice.yaml）+ 自动列出最近更新的文章。
+
+  只在首页渲染（由 layouts/list.html 调用）。
+  关闭功能用"内容指纹"实现：指纹存在 head 里，读者关掉后只要公告内容变了，
+  指纹随之变化，卡片会重新出现。
+*/ -}}
+{{- $cfg := site.Data.notice -}}
+{{- if and $cfg $cfg.enable -}}
+{{- $now := now -}}
+
+{{- /* ---------- 手写公告：过滤过期项 ---------- */ -}}
+{{- $notices := slice -}}
+{{- range $cfg.notices -}}
+  {{- $expired := false -}}
+  {{- with .until -}}
+    {{- if lt (time.AsTime .) $now -}}{{- $expired = true -}}{{- end -}}
+  {{- end -}}
+  {{- if not $expired -}}{{- $notices = $notices | append . -}}{{- end -}}
+{{- end -}}
+
+{{- /* ---------- 自动部分：最近更新的文章 ---------- */ -}}
+{{- $recent := slice -}}
+{{- $count := $cfg.recent_count | default 0 -}}
+{{- if gt $count 0 -}}
+  {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+  {{- /* 必须用布尔判断：主题里写的 where "!=" "true" 是字符串比较，
+         hiddenInHomeList 为 false 时也会被判为"不等于 true"而被滤掉，
+         反而把显式声明 false 的页面全部排除，是个反向过滤的坑。 */ -}}
+  {{- $pages = where $pages "Params.hiddenInHomeList" "!=" true -}}
+  {{- $recent = first $count ($pages.ByDate.Reverse) -}}
+{{- end -}}
+
+{{- if or $notices $recent -}}
+{{- $labels := dict "new" "新文章" "feature" "功能" "fix" "修复" -}}
+<aside class="notice-card" id="notice-card" aria-label="站内公告">
+  <div class="notice-head">
+    <span class="notice-title">{{ $cfg.title | default "近期更新" }}</span>
+    {{- if $cfg.dismissible | default true -}}
+    <button type="button" class="notice-hide" id="notice-hide" title="关闭公告" aria-label="关闭公告">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    {{- end -}}
+  </div>
+
+  {{- with $notices }}
+  <ul class="notice-list">
+    {{- range . }}
+    {{- $type := .type | default "feature" }}
+    {{- $label := index $labels $type | default "更新" }}
+    {{- $text := .text | markdownify }}
+    <li>
+      {{- with .date }}<time datetime="{{ time.Format "2006-01-02" (time.AsTime .) }}">{{ time.Format "01-02" (time.AsTime .) }}</time>{{ end -}}
+      <span class="notice-badge notice-badge-{{ $type }}">{{ $label }}</span>
+      <span class="notice-text">
+        {{- with .link }}<a href="{{ . | relURL }}">{{ $text }}</a>{{ else }}{{ $text }}{{ end -}}
+      </span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+
+  {{- with $recent }}
+  <div class="notice-recent">
+    <span class="notice-recent-title">最近更新</span>
+    <ul>
+      {{- range . }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+</aside>
+{{- end -}}
+{{- end -}}

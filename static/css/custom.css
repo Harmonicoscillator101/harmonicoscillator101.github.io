@@ -239,3 +239,177 @@ body {
         --card-bg: rgba(255, 255, 255, 0.88);
     }
 }
+
+/* ==========================================================================
+   首页公告栏（layouts/partials/notice.html）
+   --------------------------------------------------------------------------
+   1. 读者关闭过"当前这一版"公告时，<html> 上会带 data-notice-closed，
+      由本文件最后一条规则直接隐藏；脚本在 <head> 中执行，所以不会闪烁。
+   2. 卡片位于 profile 下方，而 profile 默认占满一屏，
+      有公告时把它的高度压到 60vh，否则读者要滚一整屏才看得到公告。
+   ========================================================================== */
+@media (min-width: 768px) {
+    .main:has(.notice-card) .profile {
+        min-height: 60vh;
+    }
+}
+
+.notice-card {
+    position: relative;
+    margin: 0 auto 2rem;
+    padding: 1rem 1.15rem;
+    max-width: var(--main-width);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--card-bg);
+}
+
+.notice-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.notice-title {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* 标题前的小圆点，纯装饰 */
+.notice-title::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.45rem;
+    border-radius: 50%;
+    background-color: #2f9e44;
+    vertical-align: middle;
+}
+
+.notice-hide {
+    margin-left: auto;
+    padding: 0;
+    line-height: 0;
+    color: var(--secondary);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: opacity 0.15s ease;
+}
+
+.notice-hide:hover {
+    opacity: 1;
+}
+
+.notice-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.notice-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.45rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.notice-list li time {
+    flex: 0 0 auto;
+    color: var(--secondary);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.notice-text {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+/* 类型徽章：用 color-mix 与主题色混合，深浅色模式都能自适应 */
+.notice-badge {
+    flex: 0 0 auto;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--primary);
+    background-color: var(--tertiary);
+    background-color: color-mix(in srgb, var(--badge-color, var(--secondary)) 18%, transparent);
+    border: 1px solid color-mix(in srgb, var(--badge-color, var(--secondary)) 38%, transparent);
+}
+
+.notice-badge-new {
+    --badge-color: #2f9e44;
+}
+
+.notice-badge-feature {
+    --badge-color: #4c6ef5;
+}
+
+.notice-badge-fix {
+    --badge-color: #f08c00;
+}
+
+.notice-recent {
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
+    border-top: 1px dashed var(--border);
+}
+
+.notice-recent-title {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.notice-recent ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.notice-recent li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.15rem 0;
+}
+
+.notice-recent li a {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notice-recent li time {
+    flex: 0 0 auto;
+    color: var(--secondary);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+    .notice-list li {
+        gap: 0.35rem;
+    }
+
+    .notice-text {
+        flex: 1 1 100%;
+    }
+}
+
+/* 读者关过这一版公告 → 直接不渲染（无闪烁） */
+[data-notice-closed] .notice-card {
+    display: none !important;
+}

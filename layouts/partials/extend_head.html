@@ -1,5 +1,9 @@
-<link rel="stylesheet" href="/css/custom.css">
-{{- /* 公式引擎：hugo.toml 里的 params.mathEngine 可设为 katex（默认）或 mathjax */ -}}
+﻿<link rel="stylesheet" href="/css/custom.css">
+{{- /* 棣栭〉鍏憡鏍忕殑鍏抽棴鐘舵€侊紙浠呴椤甸渶瑕侊紝涓斿繀椤绘棭浜庨〉闈㈡覆鏌擄級 */ -}}
+{{- if and .IsHome site.Data.notice -}}
+{{- partial "notice_head.html" . }}
+{{- end }}
+{{- /* 鍏紡寮曟搸锛歨ugo.toml 閲岀殑 params.mathEngine 鍙涓?katex锛堥粯璁わ級鎴?mathjax */ -}}
 {{- if .Params.math | default .Site.Params.math -}}
 {{- $engine := .Param "mathEngine" -}}
 {{- if not $engine }}{{ $engine = site.Params.mathEngine }}{{ end -}}
@@ -10,3 +14,4 @@
 {{- partial "katex.html" . }}
 {{- end -}}
 {{- end -}}
+
