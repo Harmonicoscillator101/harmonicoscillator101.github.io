@@ -1,8 +1,6 @@
 # 首页公告栏内容
 # ---------------------------------------------------------------------------
-# 手写部分：在 notices 里加条目即可
-# 自动部分：recent_count > 0 时，卡片底部自动列出最近更新的文章，
-#           数据源与「时间轴」页一致（site.Params.mainSections）
+# 只列出最近更新的文章，数据源与「时间轴」页一致（site.Params.mainSections）
 
 # 总开关：改为 false 即可整块隐藏
 enable: true
@@ -15,22 +13,5 @@ title: "近期更新"
 #（用 sessionStorage 实现，并在离开页面时清除标记）
 dismissible: true
 
-# 显示几篇最近文章（0 = 不显示自动部分）
+# 列出几篇文章（0 = 不显示公告栏）
 recent_count: 3
-
-# 手写公告。字段说明：
-#   date  : YYYY-MM-DD，可省略（省略则不显示日期）
-#   until : YYYY-MM-DD，可选，过期后该条自动隐藏
-#   type  : new（新文章）/ feature（功能）/ fix（修复），决定徽章文案与配色
-#   text  : 正文，支持行内 Markdown 与公式（如 $E=mc^2$、`代码`）
-#   link  : 可选，条目变为可点击的链接
-notices:
-  - date: 2026-09-16
-    type: feature
-    text: "数学公式渲染改为 KaTeX，体积更小、首屏不再闪动，并支持 `\\label` / `\\ref` 公式交叉引用"
-  - date: 2026-09-16
-    type: fix
-    text: "修复深色模式与首页背景图不显示的问题（PaperMod 的 `.list` 规则覆盖了 body 背景）"
-  - date: 2026-09-16
-    type: feature
-    text: "新增定理 / 定义 / 证明环境，写作时用 `{{</* theorem */>}}` 即可，自动编号"
